@@ -3,7 +3,7 @@ let ClockTime = () => {
 
   return (
     <div className="container">
-      <p className="fw-bolder">
+      <p className="fw-bolder lead">
         This is the current time: {date.toLocaleTimeString()}-
         {date.toLocaleDateString()}
       </p>
