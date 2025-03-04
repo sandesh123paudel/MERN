@@ -1,18 +1,21 @@
-const Item =(props)=>{
+import css from "./Item.module.css";
 
+const Item = (props) => {
   //// One Way to Show Data
   // let {foodItem}=props;
   // return <>
   // <li className="list-group-item">{foodItem}</li>
   // </>
 
-
   ////Another Way
-  return <>
-  <li className="list-group-item">{props.foodItem}</li>
-  </>
-}
-
+  return (
+    <>
+      <li className={`${css['kg-item']} list-group-item`}>
+        <span className= {`${css['kg-span']}`}>{props.foodItem}</span>
+      </li>
+    </>
+  );
+};
 
 ////Destructuring Way
 
@@ -22,6 +25,5 @@ const Item =(props)=>{
 //   <li className="list-group-item">{foodItem}</li>
 //   </>
 // }
-
 
 export default Item;
