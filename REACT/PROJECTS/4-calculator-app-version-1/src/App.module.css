@@ -1,0 +1,29 @@
+.calculator{
+  width: 50vw;
+  border:1px solid black;
+  border-radius: 10px;
+
+}
+
+.display{
+  width: 46vw;
+  margin: 1vw 2vw;
+  font-size: 25px;
+
+}
+
+.buttonsContainer{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 10px;
+  
+
+}
+
+button{
+  height: 45px;
+  width: 45px;
+  margin: 3px;
+}
