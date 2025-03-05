@@ -1,17 +1,13 @@
 import css from "./Item.module.css";
 
-const Item = ({ foodItem }) => {
-  const handleBuyButtonClicked = (event) => {
-    console.log(event);
-    window.alert(`Buy Button Clicked for ${foodItem}`);
-  };
+const Item = ({ foodItem, handleBuyButton }) => {
   return (
     <>
       <li className={`${css["kg-item"]} list-group-item`}>
         <span className={`${css["kg-span"]}`}>{foodItem}</span>
         <button
           className={`${css.button} btn btn-success`}
-          onClick={(event)=>handleBuyButtonClicked(event)}
+          onClick={handleBuyButton}
         >
           Buy
         </button>
