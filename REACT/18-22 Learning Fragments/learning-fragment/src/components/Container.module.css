@@ -1,0 +1,9 @@
+.container {
+
+  width: 50%;
+  min-width: 200px;
+  border: 2px solid navy;
+  margin: 10px;
+  border-radius: 5px;
+  background-color: aquamarine;
+}
