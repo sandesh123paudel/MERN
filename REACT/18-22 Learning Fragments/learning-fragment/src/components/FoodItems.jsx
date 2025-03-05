@@ -1,14 +1,13 @@
 import Item from "./Item";
 
-const FoodItems=(props)=>{
+const FoodItems = ({ items }) => {
   return (
     <ul className="list-group">
-          {props.items.map((item) => (
-            <Item key={item} foodItem={item}/>
-          ))}
+      {items.map((item) => (
+        <Item key={item} foodItem={item} />
+      ))}
     </ul>
   );
-
-}
+};
 
 export default FoodItems;

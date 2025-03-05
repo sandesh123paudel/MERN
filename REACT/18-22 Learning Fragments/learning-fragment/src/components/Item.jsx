@@ -1,29 +1,23 @@
 import css from "./Item.module.css";
 
-const Item = (props) => {
-  //// One Way to Show Data
-  // let {foodItem}=props;
-  // return <>
-  // <li className="list-group-item">{foodItem}</li>
-  // </>
-
-  ////Another Way
+const Item = ({ foodItem }) => {
+  const handleBuyButtonClicked = (event) => {
+    console.log(event);
+    window.alert(`Buy Button Clicked for ${foodItem}`);
+  };
   return (
     <>
-      <li className={`${css['kg-item']} list-group-item`}>
-        <span className= {`${css['kg-span']}`}>{props.foodItem}</span>
+      <li className={`${css["kg-item"]} list-group-item`}>
+        <span className={`${css["kg-span"]}`}>{foodItem}</span>
+        <button
+          className={`${css.button} btn btn-success`}
+          onClick={(event)=>handleBuyButtonClicked(event)}
+        >
+          Buy
+        </button>
       </li>
     </>
   );
 };
-
-////Destructuring Way
-
-// const Item =({foodItem})=>{
-
-//   return <>
-//   <li className="list-group-item">{foodItem}</li>
-//   </>
-// }
 
 export default Item;

@@ -8,3 +8,8 @@
   text-transform: uppercase;
   color: blueviolet;
 }
+
+.button{
+  margin: 10px;
+  float: right;
+}
