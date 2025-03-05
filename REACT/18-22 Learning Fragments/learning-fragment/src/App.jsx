@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import FoodItems from "./components/FoodItems";
@@ -7,13 +7,23 @@ import Container from "./components/Container";
 import FoodInput from "./components/FoodInput";
 
 function App() {
-  let foodItems = ["Daal", "Green Vegetable", "Roti", "Milk", "Salad"];
+  // let foodItems = ["Daal", "Green Vegetable", "Roti", "Milk", "Salad"];
 
-  
+  // let textStateArr = useState("Food Item Entered By User");
+  // let textToShow = textStateArr[0];
+  // let setTextState = textStateArr[1];
+  // console.log(`Current textToSHow:${textToShow}`);
 
-  const handleOnChange = (event) => {
-    textTOShow = event.target.value;
-    console.log(event.target.value);
+  // let [textToShow, setTextState] = useState("Food Items");
+  let [foodItems, setFoodItems] = useState([]);
+
+  const onKeyDown = (event) => {
+    if (event.key === "Enter") {
+      let newFoodItem = event.target.value;
+      event.target.value = "";
+      let newItems = [...foodItems, newFoodItem];
+      setFoodItems(newItems);
+    }
   };
 
   // let foodItems = [];
@@ -23,8 +33,8 @@ function App() {
       <Container>
         <h1 className="food-heading">Healthy Foods</h1>
         <ErrorMessage items={foodItems} />
-        <FoodInput handleOnChange={handleOnChange} />
-       
+        <FoodInput handleKeyDown={onKeyDown} />
+        {/* <p>{textToShow}</p> */}
 
         <FoodItems items={foodItems} />
       </Container>
