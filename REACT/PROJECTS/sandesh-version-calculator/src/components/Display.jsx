@@ -1,11 +1,7 @@
-function Display() {
+function Display({ displayVal }) {
   return (
     <>
-      <input
-        className="displayBox"
-        placeholder="399,981"
-        type="numeric"
-      ></input>
+      <input className="displayBox" value={displayVal} type="numeric"></input>
     </>
   );
 }
