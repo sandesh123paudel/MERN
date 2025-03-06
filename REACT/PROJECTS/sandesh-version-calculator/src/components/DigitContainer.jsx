@@ -1,4 +1,4 @@
-function DigitContainer() {
+function DigitContainer({ onDigitClick }) {
   const numbers = [
     "7",
     "8",
@@ -15,14 +15,19 @@ function DigitContainer() {
     ".",
     "0",
     "/",
-    "X",
+    "*",
   ];
 
   return (
     <>
       <div className="digitContainer">
         {numbers.map((button) => (
-          <button className={button === "DEL" ? "del" : ""}>{button}</button>
+          <button
+            className={button === "DEL" ? "del" : ""}
+            onClick={((button) => onDigitClick, button)}
+          >
+            {button}
+          </button>
         ))}
 
         <button className="reset">RESET</button>

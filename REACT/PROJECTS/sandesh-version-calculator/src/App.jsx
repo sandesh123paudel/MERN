@@ -10,7 +10,7 @@ function App() {
     <div className="container">
       <div className="content">calculator</div>
       <Display displayVal={calVal} />
-      <DigitContainer />
+      <DigitContainer onDigitClick={() => window.alert("Button Clicked")} />
     </div>
   );
 }
