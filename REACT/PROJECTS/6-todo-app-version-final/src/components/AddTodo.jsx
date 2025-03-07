@@ -1,5 +1,6 @@
 import { useState } from "react";
 import css from "./AddTodo.module.css";
+import { TiDocumentAdd } from "react-icons/ti";
 
 function AddTodo({ onSubmit }) {
   // State to track input values
@@ -51,7 +52,7 @@ function AddTodo({ onSubmit }) {
             className="btn btn-success kg-button"
             onClick={handleSubmit} // Call function on click
           >
-            Add
+            <TiDocumentAdd/>
           </button>
         </div>
       </div>

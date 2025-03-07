@@ -1,4 +1,6 @@
-function TodoItem({ todoName, todoDate,onDelete }) {
+import { FaDeleteLeft } from "react-icons/fa6";
+
+function TodoItem({ todoName, todoDate, onDelete }) {
   return (
     <div className="container">
       <div className="row kg-row">
@@ -10,7 +12,7 @@ function TodoItem({ todoName, todoDate,onDelete }) {
             className="btn btn-danger kg-button"
             onClick={() => onDelete(todoName, todoDate)}
           >
-            Delete
+            <FaDeleteLeft />
           </button>
         </div>
       </div>

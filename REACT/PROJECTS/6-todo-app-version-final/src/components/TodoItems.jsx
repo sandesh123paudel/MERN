@@ -7,7 +7,7 @@ const TodoItems = ({ todoItems, onDelete }) => {
       <div className={css.itemsContainer}>
         {todoItems.map((item) => (
           <TodoItem
-            key={item}
+            key={item.name}
             todoName={item.name}
             todoDate={item.duedate}
             onDelete={onDelete}
