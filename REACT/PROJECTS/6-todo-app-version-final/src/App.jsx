@@ -1,6 +1,6 @@
 import AppName from "./components/AppName";
 import AppTodo from "./components/AddTodo";
-
+import Message from "./components/Message";
 import TodoItems from "./components/TodoItems";
 import { useState } from "react";
 
@@ -35,11 +35,8 @@ function App() {
     <center className="todo-container">
       <AppName />
       <AppTodo onSubmit={itemsAdded} />
-      {todoItems.length > 0 ? (
-        <TodoItems todoItems={todoItems} onDelete={onDeleteHandler} />
-      ) : (
-        "No Items In the List"
-      )}
+      <Message data={todoItems} />
+      <TodoItems todoItems={todoItems} onDelete={onDeleteHandler} />
     </center>
   );
 }
