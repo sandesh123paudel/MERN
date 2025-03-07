@@ -1,7 +1,11 @@
 const Message = ({ data }) => {
   return (
     <>
-      {data.length > 0 ? `${data.length} To-Do Items` : "No Items in The Todo"}
+      <p style={{ color: "purple", fontSize: "18px" }}>
+        {data.length > 0
+          ? `${data.length} To-Do Items`
+          : "No Items in The Todo"}
+      </p>
     </>
   );
 };

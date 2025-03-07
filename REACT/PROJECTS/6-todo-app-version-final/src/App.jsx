@@ -5,16 +5,7 @@ import TodoItems from "./components/TodoItems";
 import { useState } from "react";
 
 function App() {
-  const initialtodoItems = [
-    {
-      name: "Buy a Milk",
-      duedate: "04/04/2025",
-    },
-    {
-      name: "Go to College",
-      duedate: "04/05/2025",
-    },
-  ];
+  const initialtodoItems = [];
 
   let [todoItems, setItemState] = useState(initialtodoItems);
 
@@ -24,11 +15,16 @@ function App() {
   };
 
   const onDeleteHandler = (todoName, todoDate) => {
-    console.log(todoDate, todoName);
-    const upDatedItems = todoItems.filter(
-      (todo) => !(todo.name === todoName && todo.duedate === todoDate)
+    const isConfirmed = window.confirm(
+      `Do you really want to delete "${todoName}"`
     );
-    setItemState(upDatedItems);
+
+    if (isConfirmed) {
+      const upDatedItems = todoItems.filter(
+        (todo) => !(todo.name === todoName && todo.duedate === todoDate)
+      );
+      setItemState(upDatedItems);
+    }
   };
 
   return (
