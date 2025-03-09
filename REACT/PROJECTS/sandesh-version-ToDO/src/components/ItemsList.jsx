@@ -7,7 +7,6 @@ const ItemsList = () => {
       <ItemsContainer />
       <ItemsContainer />
       <ItemsContainer />
-      <ItemsContainer />
     </div>
   );
 };
