@@ -1,8 +1,8 @@
-const AppFooter = () => {
+const AppFooter = ({ tasks, onDelete }) => {
   return (
     <div className="footer">
-      <p>You have 11 items today</p>
-      <button>Clear All</button>
+      <p>You have {tasks.length} items today</p>
+      <button onClick={onDelete}>Clear All</button>
     </div>
   );
 };

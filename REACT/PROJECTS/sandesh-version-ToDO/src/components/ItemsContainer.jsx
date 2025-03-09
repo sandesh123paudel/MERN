@@ -1,15 +1,17 @@
 import { AiFillDelete } from "react-icons/ai";
 
-const ItemsContainer = () => {
+const ItemsContainer = ({ tasks, onEachDelete }) => {
   return (
     <>
-      <div className="items-container">
-        <input type="checkbox" className="task-checkbox" />
-        <span className="items-name">Complete a previous task</span>
-        <button className="delete-button">
-          <AiFillDelete />
-        </button>
-      </div>
+      {tasks.map((task) => (
+        <div key={task} className="items-container">
+          <input type="checkbox" className="task-checkbox" />
+          <span className="items-name">{task}</span>
+          <button className="delete-button" onClick={() => onEachDelete(task)}>
+            <AiFillDelete />
+          </button>
+        </div>
+      ))}
     </>
   );
 };

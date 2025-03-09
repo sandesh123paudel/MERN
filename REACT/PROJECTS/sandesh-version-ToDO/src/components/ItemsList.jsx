@@ -1,12 +1,14 @@
 import ItemsContainer from "./ItemsContainer";
-const ItemsList = () => {
+const ItemsList = ({ tasks, onEachDelete }) => {
   return (
     <div className="todo-list-container">
-      <ItemsContainer />
-      <ItemsContainer />
-      <ItemsContainer />
-      <ItemsContainer />
-      <ItemsContainer />
+      {tasks.length > 0 ? (
+        <ItemsContainer tasks={tasks} onEachDelete={onEachDelete} />
+      ) : (
+        <div className="items-container" style={{ color: "red" }}>
+          No Tasks for Today
+        </div>
+      )}
     </div>
   );
 };
