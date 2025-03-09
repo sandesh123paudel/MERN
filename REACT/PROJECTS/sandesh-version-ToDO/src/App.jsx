@@ -7,7 +7,7 @@ import ItemsList from "./components/ItemsList";
 import { useState } from "react";
 
 function App() {
-  let tasks = ["Complete a previous task", "New Task"];
+  let tasks = [];
 
   let [tasksList, settaskList] = useState(tasks);
 
