@@ -16,10 +16,18 @@ body {
 
 .container {
   background-color: white;
-  height: 500px;
+  min-height: 500px;
   width: 400px;
-  padding: 30px;
-  border-radius: 20px;
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 5px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+
 
 }
 
@@ -32,22 +40,23 @@ body {
 }
 
 .input input {
-  font-size: 24px;
+  font-size: 20px;
   width: 290px;
   border: 1px solid rgba(128, 128, 128, 0.525);
   border-radius: 5px;
   padding: 2px;
+  margin-left: 10px;
 
 
 }
 
 .input input::-webkit-input-placeholder {
-  font-size: 20px;
+  font-size: 18px;
   padding: 10px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-align: left;
 
-  justify-content: center;
 }
-
 
 .input button {
   height: 40px;
@@ -56,4 +65,81 @@ body {
   border: none;
   border-radius: 5px;
   color: white;
+  margin-right: 10px;
+
+}
+
+
+.items-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 15px;
+  padding: 10px;
+  background-color: #F2F2F2;
+  border-radius: 5px;
+  margin-left: 10px;
+  margin-right: 10px;
+
+}
+
+.task-checkbox {
+  margin-right: 10px;
+  cursor: pointer;
+  accent-color: blueviolet;
+  /* border: #E74C3C; */
+  width: 18px;
+  height: 18px;
+}
+
+
+
+
+.items-name {
+  font-size: medium;
+  font-weight: 600;
+  flex-grow: 1;
+  /* Allows the text to take remaining space */
+}
+
+.delete-button {
+  background-color: #E74C3C;
+  /* Red delete button */
+  border: none;
+  padding: 10px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.delete-button svg {
+  color: white;
+  font-size: 16px;
+}
+
+.footer {
+  margin-top: auto;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  /* align-items: center; */
+  font-weight: 500;
+  font-size: 16px;
+  flex-direction: row;
+}
+
+.footer button {
+  height: 30px;
+  padding: 2.5px;
+  width: 80px;
+  background-color: blueviolet;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  margin-right: 10px;
+
 }
