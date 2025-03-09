@@ -6,7 +6,7 @@
 
 body {
   background: linear-gradient(#65E4CC, #5096E0);
-  background-repeat: no-repeat;
+
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   justify-content: center;
   align-items: center;
@@ -26,10 +26,35 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-
-
+  overflow: hidden;
 
 }
+
+.todo-list-container {
+  margin-top: 10px;
+  margin-bottom: 10px;
+
+  max-height: 350px;
+  /* Adjust height based on design */
+  overflow-y: auto;
+  /* Enables vertical scrolling */
+
+}
+
+/* Custom Scrollbar (Optional) */
+.todo-list-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.todo-list-container::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 10px;
+}
+
+.todo-list-container::-webkit-scrollbar-thumb:hover {
+  background: #aaa;
+}
+
 
 .input {
   margin-top: 10px;
