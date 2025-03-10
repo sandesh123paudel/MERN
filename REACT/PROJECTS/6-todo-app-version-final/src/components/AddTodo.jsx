@@ -27,6 +27,8 @@ function AddTodo({ onSubmit }) {
     setDate("");
   };
 
+
+  
   return (
     <div className="container text-center">
       <form className="row kg-row" onSubmit={handleSubmit}>
