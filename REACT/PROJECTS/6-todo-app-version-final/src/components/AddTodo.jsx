@@ -15,7 +15,9 @@ function AddTodo({ onSubmit }) {
     setDate(event.target.value);
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (event) => {
+    // console.log(event);
+    event.preventDefault();
     if (!item || !date) {
       alert("Please enter both a to-do item and a due date.");
       return;
@@ -27,7 +29,7 @@ function AddTodo({ onSubmit }) {
 
   return (
     <div className="container text-center">
-      <div className="row kg-row">
+      <form className="row kg-row" onSubmit={handleSubmit}>
         <div className="col-6">
           <input
             className={css.input}
@@ -48,14 +50,13 @@ function AddTodo({ onSubmit }) {
         </div>
         <div className="col-2">
           <button
-            type="button"
             className="btn btn-success kg-button"
-            onClick={handleSubmit} // Call function on click
+            // Call function on click
           >
-            <TiDocumentAdd/>
+            <TiDocumentAdd />
           </button>
         </div>
-      </div>
+      </form>
     </div>
   );
 }

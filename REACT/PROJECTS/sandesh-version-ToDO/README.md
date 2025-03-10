@@ -1,12 +1,54 @@
-# React + Vite
+# To-Do App Using React
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to the **To-Do App** repository! This is a simple and intuitive task management application built using **React**. It allows you to add, complete, and delete tasks, helping you stay organized and productive. The app is also hosted and can be accessed live at [https://sandeshpaudel-todoapp.netlify.app/](https://sandeshpaudel-todoapp.netlify.app/).
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## Expanding the ESLint configuration
+- **Add Tasks**: Easily add new tasks with a title.
+- **Mark as Complete**: Check off tasks when they're done.
+- **Delete Tasks**: Remove tasks you no longer need.
+- **Responsive Design**: Works seamlessly on desktop, tablet, and mobile devices.
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## Live Demo
+
+You can check out the live version of the app here:  
+👉 [https://sandeshpaudel-todoapp.netlify.app/](https://sandeshpaudel-todoapp.netlify.app/)
+
+---
+
+## Technologies Used
+
+- **React**: A JavaScript library for building user interfaces.
+- **Vite**: A fast build tool and development server.
+- **CSS**: For styling the application.
+- **Local Storage**: To persist tasks in the browser.
+
+---
+
+## How to Run Locally
+
+1. Clone the repository.
+2. Navigate to the project directory.
+3. Install dependencies using `npm install`.
+4. Start the development server using `npm run dev`.
+5. Open your browser and visit `http://localhost:5173` to view the app.
+
+---
+
+## Contributing
+
+Contributions are welcome! If you'd like to improve this project, feel free to open an issue or submit a pull request.
+
+---
+
+## License
+
+This project is open-source and available under the [MIT License](./LICENSE).
+
+---
+
+Enjoy using the **To-Do App**! If you have any questions or feedback, feel free to reach out. 😊
