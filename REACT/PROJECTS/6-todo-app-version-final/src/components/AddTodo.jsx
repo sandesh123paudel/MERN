@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import css from "./AddTodo.module.css";
 import { TiDocumentAdd } from "react-icons/ti";
 
@@ -7,12 +7,16 @@ function AddTodo({ onSubmit }) {
   const [item, setItem] = useState("");
   const [date, setDate] = useState("");
 
+  const noOfUpdates = useRef(0);
+
   const handleItemName = (event) => {
     setItem(event.target.value);
+    noOfUpdates.current += 1;
   };
 
   const handleDate = (event) => {
     setDate(event.target.value);
+    console.log(`noOfUpdates are: ${noOfUpdates.current}`)
   };
 
   const handleSubmit = (event) => {
@@ -27,8 +31,6 @@ function AddTodo({ onSubmit }) {
     setDate("");
   };
 
-
-  
   return (
     <div className="container text-center">
       <form className="row kg-row" onSubmit={handleSubmit}>
