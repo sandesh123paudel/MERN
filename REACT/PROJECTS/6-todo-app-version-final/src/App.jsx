@@ -10,8 +10,15 @@ function App() {
   let [todoItems, setItemState] = useState(initialtodoItems);
 
   const itemsAdded = (item, date) => {
-    let newItems = { name: item, duedate: date };
-    setItemState([...todoItems, newItems]);
+    // setItemState((currValue) => {
+    //   let newItems = { name: item, duedate: date };
+    //   let newToDoItems = [...currValue, newItems];
+
+    //   return newToDoItems;
+    // });
+
+    //compact way
+    setItemState((currValue) => [...currValue, { name: item, duedate: date }]);
   };
 
   const onDeleteHandler = (todoName, todoDate) => {
