@@ -1,34 +1,26 @@
-import { useState, useRef } from "react";
+import { useRef } from "react";
 import css from "./AddTodo.module.css";
 import { TiDocumentAdd } from "react-icons/ti";
 
 function AddTodo({ onSubmit }) {
-  // State to track input values
-  const [item, setItem] = useState("");
-  const [date, setDate] = useState("");
-
-  const noOfUpdates = useRef(0);
-
-  const handleItemName = (event) => {
-    setItem(event.target.value);
-    noOfUpdates.current += 1;
-  };
-
-  const handleDate = (event) => {
-    setDate(event.target.value);
-    console.log(`noOfUpdates are: ${noOfUpdates.current}`)
-  };
+  const todoNameElement = useRef();
+  const dueDateElement = useRef();
 
   const handleSubmit = (event) => {
     // console.log(event);
     event.preventDefault();
+
+    const item = todoNameElement.current.value;
+    const date = dueDateElement.current.value;
+
     if (!item || !date) {
       alert("Please enter both a to-do item and a due date.");
       return;
     }
+    // console.log(`${item}, ${date}`);
     onSubmit(item, date);
-    setItem("");
-    setDate("");
+    todoNameElement.current.value = "";
+    dueDateElement.current.value = "";
   };
 
   return (
@@ -38,18 +30,16 @@ function AddTodo({ onSubmit }) {
           <input
             className={css.input}
             type="text"
-            value={item}
+            ref={todoNameElement}
             placeholder="Enter To-Do Here"
-            onChange={handleItemName} // Update state on change
           />
         </div>
         <div className="col-4">
           <input
             className={css.input}
             type="date"
+            ref={dueDateElement}
             placeholder=""
-            value={date}
-            onChange={handleDate} // Update state on change
           />
         </div>
         <div className="col-2">
