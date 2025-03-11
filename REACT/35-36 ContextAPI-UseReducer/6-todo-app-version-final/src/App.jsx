@@ -2,17 +2,40 @@ import AppName from "./components/AppName";
 import AppTodo from "./components/AddTodo";
 import Message from "./components/Message";
 import TodoItems from "./components/TodoItems";
-import { useState } from "react";
+import { useReducer } from "react";
 import { TodoItemsContext } from "./store/todo-items-store";
 
-function App() {
-  const initialtodoItems = [];
+const todoItemsReducer = (currTodoItems, action) => {
+  let newTodoItems = currTodoItems;
+  if (action.type == "NEW_ITEM") {
+    newTodoItems = [
+      ...currTodoItems,
+      { name: action.playload.item, date: action.playload.date },
+    ];
+  } else if (action.type === "DELETE_ITEM") {
+    newTodoItems = currTodoItems.filter(
+      (todo) =>
+        !(
+          todo.name === action.playload.item &&
+          todo.duedate === action.playload.date
+        )
+    );
+  }
+  return newTodoItems;
+};
 
-  let [todoItems, setItemState] = useState(initialtodoItems);
+function App() {
+  const [todoItems, dispatchTodoItems] = useReducer(todoItemsReducer, []);
 
   const addNewItem = (item, date) => {
-    const newTodoItems = [...todoItems, { name: item, date: date }];
-    setItemState(newTodoItems);
+    const newItemAction = {
+      type: "NEW_ITEM",
+      playload: {
+        item,
+        date,
+      },
+    };
+    dispatchTodoItems(newItemAction);
   };
 
   const deleteItem = (todoName, todoDate) => {
@@ -20,12 +43,15 @@ function App() {
       `Do you really want to delete "${todoName}"`
     );
 
-    if (isConfirmed) {
-      const upDatedItems = todoItems.filter(
-        (todo) => !(todo.name === todoName && todo.duedate === todoDate)
-      );
-      setItemState(upDatedItems);
-    }
+    if (!isConfirmed) return;
+    const deleteItemAction = {
+      type: "DELETE_ITEM",
+      playload: {
+        item: todoName,
+        date: todoDate,
+      },
+    };
+    dispatchTodoItems(deleteItemAction);
   };
 
   return (
