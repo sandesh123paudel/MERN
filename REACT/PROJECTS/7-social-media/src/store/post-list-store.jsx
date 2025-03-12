@@ -1,0 +1,79 @@
+import { createContext, useReducer } from "react";
+
+export const PostList = createContext({
+  postList: [],
+  addPost: () => {},
+  deletePost: () => {},
+});
+
+const postListReducer = (currPostList, action) => {
+  return currPostList;
+};
+
+const PostListProvider = ({ children }) => {
+  const [postList, dispatchPostList] = useReducer(
+    postListReducer,
+    DEFAULT_POST_LIST
+  );
+
+  const addPost = () => {};
+
+  const deletePost = () => {};
+
+  return (
+    <PostList.Provider
+      value={{
+        postList,
+        addPost,
+        deletePost,
+      }}
+    >
+      {children}
+    </PostList.Provider>
+  );
+};
+
+const DEFAULT_POST_LIST = [
+  {
+    id: "1",
+    title: "Lovely Valley in Nepal: Kathmandu",
+    body: "Vacation Going On!! Exploring the beauty of Kathmandu",
+    reactions: 2,
+    userID: "user-9",
+    tags: ["vacation", "Kathmandu", "Enjoying"],
+  },
+  {
+    id: "2",
+    title: "Sunset at the Beach",
+    body: "Watching the sunset at the beach is so relaxing!",
+    reactions: 5,
+    userID: "user-3",
+    tags: ["sunset", "beach", "relaxing"],
+  },
+  {
+    id: "3",
+    title: "Mountain Hiking Adventure",
+    body: "Just completed a challenging hike in the mountains.",
+    reactions: 8,
+    userID: "user-5",
+    tags: ["hiking", "mountains", "adventure"],
+  },
+  {
+    id: "4",
+    title: "City Lights at Night",
+    body: "The city looks beautiful with all the lights at night.",
+    reactions: 3,
+    userID: "user-7",
+    tags: ["city", "night", "lights"],
+  },
+  {
+    id: "5",
+    title: "Delicious Homemade Pizza",
+    body: "Made a delicious pizza at home today!",
+    reactions: 10,
+    userID: "user-2",
+    tags: ["pizza", "homemade", "delicious"],
+  },
+];
+
+export default PostListProvider;
