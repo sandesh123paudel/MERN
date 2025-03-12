@@ -9,3 +9,18 @@
 .sidebar {
   min-height: 100vh;
 }
+
+.post-card {
+  margin: 40px 30px;
+  min-width: 40vw;
+}
+
+.hashtag {
+  margin: 0px 3px;
+}
+
+.reactions {
+  margin: 15px 0 0 0;
+  width: 100%;
+  text-align: center;
+}

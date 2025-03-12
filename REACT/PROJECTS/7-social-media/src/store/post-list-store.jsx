@@ -37,10 +37,11 @@ const DEFAULT_POST_LIST = [
   {
     id: "1",
     title: "Lovely Valley in Nepal: Kathmandu",
-    body: "Vacation Going On!! Exploring the beauty of Kathmandu",
+    body: "Vacation Going On!! Exploring the beauty of Kathmandu.",
     reactions: 2,
     userID: "user-9",
-    tags: ["vacation", "Kathmandu", "Enjoying"],
+    tags: ["travel", "nature", "adventure"],
+    image: "",
   },
   {
     id: "2",
@@ -48,7 +49,8 @@ const DEFAULT_POST_LIST = [
     body: "Watching the sunset at the beach is so relaxing!",
     reactions: 5,
     userID: "user-3",
-    tags: ["sunset", "beach", "relaxing"],
+    tags: ["sunset", "beach", "relaxation"],
+    image: "",
   },
   {
     id: "3",
@@ -57,6 +59,7 @@ const DEFAULT_POST_LIST = [
     reactions: 8,
     userID: "user-5",
     tags: ["hiking", "mountains", "adventure"],
+    image: "",
   },
   {
     id: "4",
@@ -64,7 +67,8 @@ const DEFAULT_POST_LIST = [
     body: "The city looks beautiful with all the lights at night.",
     reactions: 3,
     userID: "user-7",
-    tags: ["city", "night", "lights"],
+    tags: ["cityscape", "nightlife", "urban"],
+    image: "",
   },
   {
     id: "5",
@@ -72,7 +76,8 @@ const DEFAULT_POST_LIST = [
     body: "Made a delicious pizza at home today!",
     reactions: 10,
     userID: "user-2",
-    tags: ["pizza", "homemade", "delicious"],
+    tags: ["food", "homemade", "delicious"],
+    image: "",
   },
 ];
 
