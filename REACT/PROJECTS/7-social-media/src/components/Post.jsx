@@ -1,9 +1,9 @@
 import { useContext } from "react";
 import { RxCross1 } from "react-icons/rx";
-import PostList from "../store/post-list-store";
+import { PostListContext } from "../store/post-list-store";
 
 const Post = ({ post }) => {
-  const { deletePost } = useContext(PostList);
+  const { deletePost } = useContext(PostListContext);
 
   const tagColors = {
     travel: "text-bg-primary",
@@ -39,7 +39,7 @@ const Post = ({ post }) => {
         <h5 className="card-title">
           {post.title}
           <span
-            class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+            class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger delete"
             onClick={() => deletePost(post.id)}
           >
             <RxCross1 />
@@ -54,7 +54,7 @@ const Post = ({ post }) => {
             {tag}
           </span>
         ))}
-        <div class="alert alert-warning reactions" role="alert">
+        <div className="alert alert-warning reactions" role="alert">
           Total Reactions In This Post: {post.reactions}
         </div>
       </div>
