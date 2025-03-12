@@ -23,7 +23,7 @@ const Post = ({ post }) => {
   };
 
   return (
-    <div className="card post-card" style={{ width: "30rem" }}>
+    <div className="card post-card" style={{ }}>
       <img
         className="card-img-top"
         src={
