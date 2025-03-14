@@ -55,6 +55,21 @@ const PostListProvider = ({ children }) => {
     console.log(`${postId}`);
   };
 
+  const delete3Post = (postId) => {
+    confirm(`${"Do you want to delete this post?"}`);
+    if (confirm) {
+      dispatchPostList({
+        type: "DELETE_POST",
+        payload: {
+          postId,
+        },
+      });
+    }
+
+    console.log(`${postId}`);
+  };
+
+  
   return (
     <PostListContext.Provider
       value={{
