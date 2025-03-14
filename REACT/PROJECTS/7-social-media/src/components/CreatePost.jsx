@@ -16,9 +16,14 @@ const CreatePost = () => {
     const postTitle = postTitleElement.current.value;
     const postBody = postBodyElement.current.value;
     const reactions = reactionsElement.current.value;
-    const hashtags = hashtagsElement.current.value.split(/(\s+)/);
+    const hashtags = hashtagsElement.current.value.split(" ");
 
     addPost(userId, postTitle, postBody, reactions, hashtags);
+    userIdElement.current.value = "";
+    postTitleElement.current.value = "";
+    postBodyElement.current.value == "";
+    reactionsElement.current.value = "";
+    hashtagsElement.current.value=" ";
   };
 
   return (
@@ -27,7 +32,7 @@ const CreatePost = () => {
       <div className="form-group mb-4">
         <label htmlFor="userId">User-ID</label>
         <input
-          type="number"
+          type="text"
           ref={userIdElement}
           className="form-control"
           id="userId"
