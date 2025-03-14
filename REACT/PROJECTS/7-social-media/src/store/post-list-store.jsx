@@ -22,7 +22,11 @@ const PostListProvider = ({ children }) => {
     DEFAULT_POST_LIST
   );
 
-  const addPost = () => {};
+  const addPost = (userId, postTitle, postBody, reactions, hashtags) => {
+    console.log(
+      `${userId}, ${postTitle}, ${postBody}, ${reactions}, ${hashtags}`
+    );
+  };
 
   const deletePost = (postId) => {
     confirm(`${"Do you want to delete this post?"}`);
@@ -59,7 +63,7 @@ const DEFAULT_POST_LIST = [
     reactions: 2,
     userID: "user-9",
     tags: ["travel", "nature", "adventure"],
-    image: "",
+    // image: "",
   },
   {
     id: "2",
@@ -68,7 +72,7 @@ const DEFAULT_POST_LIST = [
     reactions: 5,
     userID: "user-3",
     tags: ["sunset", "beach", "relaxation"],
-    image: "",
+    // image: "",
   },
   {
     id: "3",
@@ -77,7 +81,7 @@ const DEFAULT_POST_LIST = [
     reactions: 8,
     userID: "user-5",
     tags: ["hiking", "mountains", "adventure"],
-    image: "",
+    // image: "",
   },
   {
     id: "4",
@@ -86,7 +90,7 @@ const DEFAULT_POST_LIST = [
     reactions: 3,
     userID: "user-7",
     tags: ["cityscape", "nightlife", "urban"],
-    image: "",
+    // image: "",
   },
   {
     id: "5",
@@ -95,7 +99,7 @@ const DEFAULT_POST_LIST = [
     reactions: 10,
     userID: "user-2",
     tags: ["food", "homemade", "delicious"],
-    image: "",
+    // image: "",
   },
 ];
 

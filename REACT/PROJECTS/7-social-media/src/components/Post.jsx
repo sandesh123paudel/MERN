@@ -23,8 +23,8 @@ const Post = ({ post }) => {
   };
 
   return (
-    <div className="card post-card" style={{ }}>
-      <img
+    <div className="card post-card" style={{}}>
+      {/* <img
         className="card-img-top"
         src={
           post.image
@@ -33,13 +33,13 @@ const Post = ({ post }) => {
         }
         alt=""
         height="300px"
-      />
+      /> */}
 
       <div className="card-body" style={{ justifyItems: "center" }}>
         <h5 className="card-title">
           {post.title}
           <span
-            class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger delete"
+            className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger delete"
             onClick={() => deletePost(post.id)}
           >
             <RxCross1 />

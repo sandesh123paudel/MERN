@@ -8,6 +8,7 @@
 
 .sidebar {
   min-height: 100vh;
+
 }
 
 .post-card {
@@ -28,4 +29,13 @@
 
 .delete {
   cursor: pointer;
+}
+
+.create-post {
+  width: 80%;
+  margin-left: 10%;
+  margin-top: 10%;
+  padding: 10px;
+
+
 }
