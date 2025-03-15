@@ -9,6 +9,8 @@
 
 body {
   font-family: 'Roboto Mono', monospace;
+  background-color: antiquewhite;
+
 }
 
 h1,
@@ -18,4 +20,136 @@ h4,
 h5,
 h6 {
   font-family: 'Josefin Sans', sans-serif;
+}
+
+.heading {
+  margin: 20px;
+  color: #1b0509;
+  font-weight: 600;
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  background: linear-gradient(rgba(255, 29, 29, 0.463), rgb(6, 232, 134));
+  height: 100vh;
+  margin: 50px 50px;
+  border-radius: 30px;
+
+}
+
+.main-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.column {
+  flex: 1;
+  position: ab;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.left {
+  background: linear-gradient(rgba(255, 29, 29, 0.463), rgb(6, 232, 134));
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  padding: 20px;
+
+}
+
+.right {
+  background: linear-gradient(rgba(255, 29, 29, 0.463), rgb(6, 232, 134));
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+
+
+}
+
+.left .label {
+  padding: 10px;
+}
+
+.inputCurr {
+  border-radius: 15px;
+  padding: 10px;
+  font-size: large;
+  width: 100%;
+  transition: 0.3s ease-in-out;
+  border: 2px solid #ccc;
+  outline: none;
+}
+
+.animated-input:focus {
+  border-color: #ff5733;
+  box-shadow: 0 0 10px rgba(255, 87, 51, 0.5);
+  transform: scale(1.01);
+}
+
+
+.exchange-container {
+  padding: 20px;
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+.table-wrapper {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  max-height: 400px;
+  /* Adjust height as needed */
+  overflow-y: auto;
+  /* Enables vertical scrolling */
+  width: 500px;
+  margin: 0 auto;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+}
+
+/* Keep the table styling */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  max-width: 600px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+thead tr {
+  background-color: #16a085;
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+th,
+td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+tbody tr:nth-child(even) {
+  background-color: rgba(255, 29, 29, 0.463);
+}
+
+tbody tr:nth-child(odd) {
+  background-color: rgb(6, 232, 134);
 }
