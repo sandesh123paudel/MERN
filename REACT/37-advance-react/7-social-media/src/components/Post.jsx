@@ -23,18 +23,7 @@ const Post = ({ post }) => {
   };
 
   return (
-    <div className="card post-card" style={{}}>
-      {/* <img
-        className="card-img-top"
-        src={
-          post.image
-            ? post.image
-            : "https://chiefexecutive.net/wp-content/uploads/2021/06/AdobeStock_435196429-1024x652.jpg"
-        }
-        alt=""
-        height="300px"
-      /> */}
-
+    <div className="card post-card">
       <div className="card-body" style={{ justifyItems: "center" }}>
         <h5 className="card-title">
           {post.title}
@@ -55,7 +44,7 @@ const Post = ({ post }) => {
           </span>
         ))}
         <div className="alert alert-warning reactions" role="alert">
-          Total Reactions In This Post: {post.reactions}
+          Total Likes In This Post: {post.reactions.likes}
         </div>
       </div>
     </div>
