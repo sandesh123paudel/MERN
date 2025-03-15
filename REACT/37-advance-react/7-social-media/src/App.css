@@ -1,0 +1,41 @@
+.app-container {
+  display: flex;
+}
+
+.content {
+  width: 100%;
+}
+
+.sidebar {
+  min-height: 100vh;
+
+}
+
+.post-card {
+  margin: 40px 30px;
+  min-width: 30vw;
+  display: inline-flex
+}
+
+.hashtag {
+  margin: 0px 3px;
+}
+
+.reactions {
+  margin: 15px 0 0 0;
+  width: 100%;
+  text-align: center;
+}
+
+.delete {
+  cursor: pointer;
+}
+
+.create-post {
+  width: 80%;
+  margin-left: 10%;
+  margin-top: 10%;
+  padding: 10px;
+
+
+}
