@@ -25,7 +25,7 @@ const postListReducer = (currPostList, action) => {
 const PostListProvider = ({ children }) => {
   const [postList, dispatchPostList] = useReducer(postListReducer, []);
 
-  const [fetching, setFetching] = useState(false);
+  // const [fetching, setFetching] = useState(false);
 
   const addPost = (post) => {
     dispatchPostList({
@@ -37,14 +37,14 @@ const PostListProvider = ({ children }) => {
     // );
   };
 
-  const addInitialPosts = (posts) => {
-    dispatchPostList({
-      type: "ADD_INITIAL_POSTS",
-      payload: {
-        posts: posts,
-      },
-    });
-  };
+  // const addInitialPosts = (posts) => {
+  //   dispatchPostList({
+  //     type: "ADD_INITIAL_POSTS",
+  //     payload: {
+  //       posts: posts,
+  //     },
+  //   });
+  // };
 
   const deletePost = (postId) => {
     confirm(`${"Do you want to delete this post?"}`);
@@ -60,29 +60,29 @@ const PostListProvider = ({ children }) => {
    
   };
 
-  useEffect(() => {
-    setFetching(true);
+  // useEffect(() => {
+  //   setFetching(true);
 
-    const controller = new AbortController();
-    const signal = controller.signal;
-    fetch("https://dummyjson.com/posts", { signal })
-      .then((res) => res.json())
-      .then((data) => {
-        addInitialPosts(data.posts);
-        setFetching(false);
-      });
+  //   const controller = new AbortController();
+  //   const signal = controller.signal;
+  //   fetch("https://dummyjson.com/posts", { signal })
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       addInitialPosts(data.posts);
+  //       setFetching(false);
+  //     });
 
-    return () => {
-      // console.log("Cleaning Up useEffect.");
-      // controller.abort();
-    };
-  }, []);
+  //   return () => {
+  //     // console.log("Cleaning Up useEffect.");
+  //     // controller.abort();
+  //   };
+  // }, []);
 
   return (
     <PostListContext.Provider
       value={{
         postList,
-        fetching,
+        // fetching,
         addPost,
         deletePost,
       }}
