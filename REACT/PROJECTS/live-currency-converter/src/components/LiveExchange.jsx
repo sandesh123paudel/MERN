@@ -33,13 +33,12 @@ const LiveExchange = () => {
               </tr>
             </thead>
             <tbody>
-              {Object.entries(rates)
-              .map(([currency, rate]) => (
+              {Object.entries(rates).map(([currency, rate]) => (
                 <tr key={currency}>
                   <td>{currency}</td>
                   <td>
-                    1 {currency} = {(rate / rates[baseCurrency]).toFixed(2)}{" "}
-                    {baseCurrency}
+                    1 {baseCurrency} = {(rate / rates[baseCurrency]).toFixed(2)}{" "}
+                    {currency}
                   </td>
                 </tr>
               ))}
