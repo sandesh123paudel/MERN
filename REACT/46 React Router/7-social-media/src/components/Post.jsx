@@ -5,23 +5,6 @@ import { PostListContext } from "../store/post-list-store";
 const Post = ({ post }) => {
   const { deletePost } = useContext(PostListContext);
 
-  const tagColors = {
-    travel: "text-bg-primary",
-    nature: "text-bg-success",
-    adventure: "text-bg-danger",
-    sunset: "text-bg-warning",
-    beach: "text-bg-info",
-    relaxation: "text-bg-secondary",
-    hiking: "text-bg-dark",
-    mountains: "text-bg-light",
-    cityscape: "text-bg-primary",
-    nightlife: "text-bg-danger",
-    urban: "text-bg-success",
-    food: "text-bg-warning",
-    homemade: "text-bg-info",
-    delicious: "text-bg-secondary",
-  };
-
   return (
     <div className="card post-card">
       <div className="card-body" style={{ justifyItems: "center" }}>
@@ -36,10 +19,7 @@ const Post = ({ post }) => {
         </h5>
         <p className="card-text">{post.body}</p>
         {post.tags.map((tag, index) => (
-          <span
-            key={index}
-            className={`badge ${tagColors[tag] || "text-bg-dark"} hashtag`}
-          >
+          <span key={index} className="badge text-bg-dark hashtag">
             {tag}
           </span>
         ))}

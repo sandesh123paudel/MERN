@@ -1,8 +1,10 @@
 import { useContext, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import { PostListContext } from "../store/post-list-store";
 
 const CreatePost = () => {
   const { addPost } = useContext(PostListContext);
+  const navigate = useNavigate();
 
   const userIdElement = useRef();
   const postTitleElement = useRef();
@@ -36,7 +38,13 @@ const CreatePost = () => {
       }),
     })
       .then((res) => res.json())
-      .then((post) => addPost(post));
+      .then((post) => {
+        addPost(post);
+        //top of home
+        navigate("/");
+      });
+    //navigates to end of home
+    // navigate("/");
   };
 
   return (
@@ -93,7 +101,7 @@ const CreatePost = () => {
           ref={hashtagsElement}
           className="form-control"
           id="tags"
-          placeholder="Emter your hashtags here"
+          placeholder="Enter your hashtags here"
         />
       </div>
 
