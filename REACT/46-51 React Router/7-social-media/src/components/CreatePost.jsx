@@ -1,4 +1,6 @@
+import { useContext } from "react";
 import { Form, redirect } from "react-router-dom";
+import { PostListContext } from "../store/post-list-store";
 const CreatePost = () => {
   // const { addPost } = useContext(PostListContext);
 

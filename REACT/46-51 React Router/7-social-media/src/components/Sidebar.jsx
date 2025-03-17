@@ -24,7 +24,11 @@ const Sidebar = () => {
               console.log("Home");
             }}
           >
-            <Link to="/" className="nav-link text-white" aria-current="page">
+            <Link
+              to="/"
+              className="nav-link text-white active"
+              aria-current="page"
+            >
               <svg className="bi pe-none me-2" width="16" height="16">
                 <use xlinkHref="#home"></use>
               </svg>
