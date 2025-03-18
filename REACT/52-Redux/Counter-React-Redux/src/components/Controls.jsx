@@ -32,6 +32,10 @@ const Controls = () => {
     });
     inputElement.current.value = "";
   };
+
+  const handlePrivacy = () => {
+    dispatch({ type: "PRIVACY_TOGGLE" });
+  };
   return (
     <>
       <div className="d-grid gap-2 d-sm-flex justify-content-sm-center ">
@@ -49,13 +53,21 @@ const Controls = () => {
         >
           -1
         </button>
+
+        <button
+          type="button"
+          className="btn btn-warning btn-lg px-4 gap-3"
+          onClick={handlePrivacy}
+        >
+          Privacy-Toggle
+        </button>
       </div>
       <div
         className="d-grid gap-2 d-sm-flex justify-content-sm-center "
         style={{ marginTop: "15px" }}
       >
         <input
-          type="text"
+          type="number"
           ref={inputElement}
           className="rounded form-control  number-input"
           placeholder="Enter a number"
