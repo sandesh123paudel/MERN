@@ -1,14 +1,18 @@
+import { IoPerson } from "react-icons/io5";
+import { FaSearch, FaHeart, FaShoppingBag } from "react-icons/fa";
+import { Link } from "react-router-dom";
+
 const Header = () => {
   return (
     <header>
       <div className="logo_container">
-        <a href="#">
+        <Link to="/">
           <img
             className="myntra_home"
             src="images/myntra_logo.webp"
             alt="Myntra Home"
           />
-        </a>
+        </Link>
       </div>
       <nav className="nav_bar">
         <a href="#">Men</a>
@@ -21,7 +25,9 @@ const Header = () => {
         </a>
       </nav>
       <div className="search_bar">
-        <span className="material-symbols-outlined search_icon">search</span>
+        <span className="material-symbols-outlined search_icon">
+          <FaSearch />
+        </span>
         <input
           className="search_input"
           placeholder="Search for products, brands and more"
@@ -29,24 +35,23 @@ const Header = () => {
       </div>
       <div className="action_bar">
         <div className="action_container">
-          <span className="material-symbols-outlined action_icon">person</span>
+          <IoPerson />
           <span className="action_name">Profile</span>
         </div>
 
         <div className="action_container">
-          <span className="material-symbols-outlined action_icon">
-            favorite
-          </span>
+          <FaHeart />
+
           <span className="action_name">Wishlist</span>
         </div>
 
-        <a className="action_container" href="pages/bag.html">
-          <span className="material-symbols-outlined action_icon">
-            shopping_bag
+        <Link className="action_container" to="/bag">
+          <FaShoppingBag color="black" />
+          <span className="action_name" style={{ color: "black" }}>
+            Bag
           </span>
-          <span className="action_name">Bag</span>
           <span className="bag-item-count">0</span>
-        </a>
+        </Link>
       </div>
     </header>
   );
