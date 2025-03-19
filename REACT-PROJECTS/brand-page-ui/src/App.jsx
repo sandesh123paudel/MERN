@@ -1,5 +1,14 @@
+import Header from "./components/Header/Header";
+import "./App.css";
+import Hero from "./components/Hero/Hero";
+
 const App = () => {
-  return <div>Brand UI</div>;
+  return (
+    <div>
+      <Header />
+      <Hero />
+    </div>
+  );
 };
 
 export default App;

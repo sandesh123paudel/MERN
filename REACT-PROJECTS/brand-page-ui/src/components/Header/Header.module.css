@@ -1,0 +1,75 @@
+.header {
+  padding: 15px 50px;
+  display: flex;
+  background-color: #ffffff;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+
+}
+
+.logo {
+  height: 52.75px;
+  width: 76px;
+}
+
+.nav {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+
+}
+
+.nav ul li {
+  display: inline;
+  /* gap: 20px; */
+
+}
+
+.nav ul li a {
+  text-decoration: none;
+  color: black;
+  font-weight: 600;
+  transition: all 0.3s ease;
+
+}
+
+.nav ul li a:hover {
+  color: #ff5100;
+}
+
+
+.loginBtn {
+  width: 75px;
+  height: 31px;
+  padding: 6px 16px;
+  background-color: #D01C28;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 5px;
+}
+
+.loginBtn:hover {
+  background-color: #7f0810e7;
+}
+
+
+@media (max-width: 600px) {
+  .header {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .nav ul {
+    flex-direction: column;
+    align-items: center;
+  }
+}
