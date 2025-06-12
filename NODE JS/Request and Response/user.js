@@ -1,5 +1,6 @@
 //Taking User Input
 const http = require("http");
+const fs = require("fs");
 
 const server = http.createServer((req, res) => {
   console.log(req.url, req.method, req.headers);
@@ -32,8 +33,13 @@ const server = http.createServer((req, res) => {
     res.write("</body>");
     res.write("</html>");
     return res.end();
+  } else if (req.url.toLowerCase() === "/submit" && req.method === "POST") {
+    fs.writeFileSync("user.txt", "User data submitted successfully!");
+    res.statusCode = 302;
+    res.setHeader("Location", "/");
+    return res.end();
   }
-  res.statusCode = 404; // Not Found
+
   res.setHeader("Content-Type", "text/html");
   res.write("<html>");
   res.write("<head><title>Page Not Found</title></head>");
