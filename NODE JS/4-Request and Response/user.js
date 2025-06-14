@@ -34,7 +34,6 @@ const server = http.createServer((req, res) => {
     res.write("</html>");
     return res.end();
   } else if (req.url.toLowerCase() === "/submit" && req.method === "POST") {
-    
     fs.writeFileSync("user.txt", "User data submitted successfully!");
     res.statusCode = 302;
     res.setHeader("Location", "/");
