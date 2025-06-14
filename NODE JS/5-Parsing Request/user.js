@@ -1,6 +1,7 @@
 //Taking User Input
 const http = require("http");
 const fs = require("fs");
+const { parse } = require("path");
 
 const server = http.createServer((req, res) => {
   console.log(req.url, req.method);
@@ -34,10 +35,30 @@ const server = http.createServer((req, res) => {
     res.write("</html>");
     return res.end();
   } else if (req.url.toLowerCase() === "/submit" && req.method === "POST") {
+    const body = [];
     req.on("data", (chunk) => {
       console.log(chunk);
+      body.push(chunk);
     });
-    fs.writeFileSync("user.txt", "User data submitted successfully!");
+
+    req.on("end", () => {
+      const parsedData = Buffer.concat(body).toString();
+      console.log(parsedData);
+
+      const params = new URLSearchParams(parsedData);
+      // const bodyObject = {};
+      // for (const [key, val] of params.entries()) {
+      //   bodyObject[key] = val;
+      // }
+
+      //above in single line
+      const bodyObject = Object.fromEntries(params);
+
+      console.log(bodyObject);
+       fs.writeFileSync("user.txt", JSON.stringify(bodyObject));
+    });
+
+   
     res.statusCode = 302;
     res.setHeader("Location", "/");
     return res.end();
