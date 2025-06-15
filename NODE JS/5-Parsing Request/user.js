@@ -1,7 +1,4 @@
-//Taking User Input
-const http = require("http");
 const fs = require("fs");
-const { parse } = require("path");
 
 const userRequestHandler=(req, res) => {
   console.log(req.url, req.method);
