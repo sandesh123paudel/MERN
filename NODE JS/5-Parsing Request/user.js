@@ -3,7 +3,7 @@ const http = require("http");
 const fs = require("fs");
 const { parse } = require("path");
 
-const server = http.createServer((req, res) => {
+const userRequestHandler=(req, res) => {
   console.log(req.url, req.method);
 
   if (req.url === "/") {
@@ -72,9 +72,6 @@ const server = http.createServer((req, res) => {
   return res.end();
 
   // process.exit(); //Stops event loop after getting the first request
-});
+};
 
-const PORT = 3000;
-server.listen(PORT, () => {
-  console.log(`Server running on address: http://localhost:${PORT}`);
-});
+module.exports=userRequestHandler;
