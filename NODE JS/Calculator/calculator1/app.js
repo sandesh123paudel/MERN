@@ -1,5 +1,5 @@
 const http = require("http");
-const homeHandler = require("./calculator");
+const homeHandler = require("./homeHandler");
 const server = http.createServer(homeHandler);
 
 const PORT = 3000;

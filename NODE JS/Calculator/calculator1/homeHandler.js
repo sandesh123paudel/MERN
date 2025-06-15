@@ -1,7 +1,8 @@
 const { parse } = require("querystring");
+const additionHandler = require("./addition");
 
 const homeHandler = (req, res) => {
-  console.log(res.url, req.method);
+  // console.log(res.url, req.method);
   res.setHeader("Content-Type", "text/html");
 
   if (req.url === "/") {
@@ -15,17 +16,17 @@ const homeHandler = (req, res) => {
       `);
     return res.end();
   } else if (req.url === "/calculator") {
-    res.write("<html>");
-    res.write("<head><title>Calculator Page</title></head>");
-    res.write(`<body>
-    <h1> Calculator </h1>
-    <form action='/calculate-result' method='POST'>
-    <input type='number' name='a' placeholder='Enter a number' required>
-    <br></br>
-    <input type='number' name='b' placeholder='Enter another number' required>
-    <br></br>
-    <button type='submit'>Submit</button>
-    </form>
+    res.write(`<html>;
+    <head><title>Calculator Page</title></head>;
+      <body>
+        <h1> Calculator </h1>
+        <form action='/calculate-result' method='POST'>
+        <input type='number' name='a' placeholder='Enter a number' required>
+        <br></br>
+        <input type='number' name='b' placeholder='Enter another number' required>
+        <br></br>
+        <button type='submit'>Submit</button>
+        </form>
     </body>
     </html>`);
     return res.end();
@@ -43,19 +44,15 @@ const homeHandler = (req, res) => {
       additionHandler(res, Number(a), Number(b));
     });
   }
-};
 
-const additionHandler = (res, a, b) => {
-  const sum = a + b;
   res.write("<html>");
-  res.write("<head><title>Result of Calculation</title></head>");
+  res.write("<head><title>Welcome to home Page</title></head>");
   res.write(`<body>
-     <h1>Result: ${a} + ${b} = ${sum}</h1>
-      <a href="/calculator">Back to Calculator</a>
-    </body>
-  </html>
-
-    `);
+    <h1>404 Page Not Exist </h1>
+    <a href="/">Go to Home</a>
+      </body>
+    </html>
+      `);
   return res.end();
 };
 
