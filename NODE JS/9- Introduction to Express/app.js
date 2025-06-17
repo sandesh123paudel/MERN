@@ -8,18 +8,19 @@ const userRequestHandler = require("./user");
 const app = express();
 
 //Creating Middlewares
-app.use((req, res, next) => {
+app.use("/", (req, res, next) => {
   console.log("Came in first middleware", req.url, req.method);
+  // res.send(`<p>Welcome to Home Page1</p>
+  //   <a href="/submit-details">Go to Submit Details  Page</a>`);
 
   //Sends to another middleware
   next();
 });
 
-app.use((req, res, next) => {
+app.use("/submit-details", (req, res, next) => {
   console.log("Came in second middleware", req.url, req.method);
   res.send("<p>Welcome to Express Series</p>");
 });
-
 
 const PORT = 3000;
 app.listen(PORT, () => {
