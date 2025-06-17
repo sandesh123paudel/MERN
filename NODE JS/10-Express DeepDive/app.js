@@ -1,4 +1,6 @@
+//External Modules
 const express = require("express");
+const bodyPaser = require("body-parser");
 
 const app = express();
 
@@ -43,9 +45,18 @@ app.get("/contact-us", (req, res, next) => {
     `);
 });
 
+app.use(bodyPaser.urlencoded());
+
 app.post("/contact-us", (req, res, next) => {
-  console.log("Handling /contact-us for POST", req.url, req.method);
-  res.send(`<h1>We will contact you shortly</h1>`);
+  console.log("Handling /contact-us for POST", req.url, req.method, req.body);
+  const name = req.body.name;
+  const email = req.body.email;
+
+  res.send(`<h1>
+    Name:${name}
+    Email:${email}
+
+    We will contact you shortly</h1>`);
 });
 
 const PORT = 3000;
