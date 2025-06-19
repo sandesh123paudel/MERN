@@ -1,9 +1,13 @@
+//Core Module
+const path = require("path");
+
 //External Module
 const express = require("express");
 
 //Local Module
 const userRouter = require("./routes/userRouter");
 const hostRouter = require("./routes/hostRouter");
+const rootPath = require("./utils/pathUtil");
 
 const app = express();
 
@@ -12,7 +16,7 @@ app.use(userRouter);
 app.use("/host", hostRouter);
 
 app.use((req, res, next) => {
-  res.status(404).send("<h1>404 Page Not Found</h1>");
+  res.sendFile(path.join(rootPath, "views", "404.html"));
 });
 
 const PORT = 3000;
