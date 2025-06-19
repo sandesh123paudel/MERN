@@ -1,0 +1,51 @@
+/* Reset some default styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body styling */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #f7f7f7;
+  color: #333;
+  line-height: 1.6;
+  padding: 20px;
+}
+
+/* Header styling */
+header {
+  background-color: #ff5a5f;
+  color: white;
+  padding: 30px 20px;
+  text-align: center;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+  font-size: 2rem;
+}
+
+/* Main content */
+main {
+  margin-top: 40px;
+  text-align: center;
+}
+
+/* Link button styling */
+a {
+  display: inline-block;
+  background-color: #ff5a5f;
+  color: white;
+  text-decoration: none;
+  padding: 12px 25px;
+  border-radius: 5px;
+  font-size: 1.1rem;
+  transition: background-color 0.3s ease;
+}
+
+a:hover {
+  background-color: #e04b50;
+}

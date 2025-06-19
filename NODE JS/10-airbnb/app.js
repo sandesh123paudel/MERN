@@ -15,6 +15,7 @@ app.use(express.urlencoded());
 app.use(userRouter);
 app.use("/host", hostRouter);
 
+//Error 404 File
 app.use((req, res, next) => {
   res.sendFile(path.join(rootPath, "views", "404.html"));
 });
