@@ -1,0 +1,25 @@
+<%- include('partials/title') %>
+  <body class="bg-gray-100 text-gray-800 font-sans">
+    <!-- Navbar -->
+<%- include('partials/header') %>
+   
+
+    <!-- Main Content -->
+    <main class="mt-20 text-center">
+      <h1 class="text-4xl font-semibold text-red-500 uppercase mb-6">Welcome
+        to
+        Airbnb</h1>
+      <h3>Here are our registered homes</h3>
+      <ul class="list-disc list-inside space-y-3 mt-6 max-w-md mx-auto">
+        <% registeredHome.forEach(home => { %>
+        <li
+          class="bg-white p-10 rounded shadow-sm border border-gray-200 hover:shadow-md transition-shadow cursor-pointer"
+          title="Click for more info">
+          <%= home.houseName %>
+        </li>
+        <% }) %>
+      </ul>
+
+    </main>
+  </body>
+</html>
