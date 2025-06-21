@@ -1,0 +1,27 @@
+<%- include('partials/title') %>
+<body class="bg-gray-100 text-gray-800 font-sans">
+  <!-- Navbar -->
+  <%- include('partials/header') %>
+
+  <!-- Main Content -->
+  <main class="mt-20 text-center">
+    <h1 class="text-4xl font-semibold text-red-500 uppercase mb-6">Welcome to Airbnb</h1>
+    <h3 class="text-lg text-gray-700">Here are our registered homes</h3>
+
+   <div class="w-sm p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
+
+      <% registeredHome.forEach(home => { %>
+        <div class="bg-white rounded-md shadow-sm overflow-hidden hover:shadow-md transition-shadow text-left">
+          <img src="<%= home.image %>" alt="<%= home.houseName %>" class="w-6/12 h- object-cover">
+          <div class="p-4">
+            <h2 class="text-lg font-semibold text-gray-800 mb-1"><%= home.houseName %></h2>
+            <p class="text-sm text-gray-600"><strong>Price:</strong> $<%= home.price %></p>
+            <p class="text-sm text-gray-600"><strong>Location:</strong> <%= home.location %></p>
+            <p class="text-sm text-gray-600"><strong>Rating:</strong> <%= home.rating %> / 5</p>
+          </div>
+        </div>
+      <% }) %>
+    </div>
+  </main>
+</body>
+</html>
