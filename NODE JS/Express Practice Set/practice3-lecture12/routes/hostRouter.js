@@ -11,6 +11,7 @@ const rootPath = require("../utils/pathUtil");
 hostRouter.get("/add-home", (req, res, next) => {
   res.render("addHome", {
     pageTitle: "Add Home-airbnb",
+    currentPage: "addHome",
   });
 });
 
@@ -18,15 +19,10 @@ const registeredHome = [];
 
 hostRouter.post("/add-home", (req, res, next) => {
   console.log(req.body);
-  registeredHome.push({
-    houseName: req.body.houseName,
-    price: req.body.price,
-    location: req.body.location,
-    rating: req.body.rating,
-    image: req.body.image,
-  });
+  registeredHome.push(req.body);
   res.render("homeAdded", {
     pageTitle: "Success-Home Added",
+    currentPage: "addHome",
   });
 });
 

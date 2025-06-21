@@ -13,6 +13,7 @@ userRouter.get("/", (req, res, next) => {
   res.render("home", {
     registeredHome: registeredHome,
     pageTitle: "Home-airbnb",
+    currentPage: "home",
   });
 });
 
