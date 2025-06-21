@@ -1,26 +1,9 @@
-<!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>404 Error Page</title>
-    <link rel="stylesheet" href="/output.css" />
-  </head>
+<%- include('partials/title') %>
+
   <body class="bg-gray-100 text-gray-800 font-sans min-h-screen flex flex-col">
 
     <!-- Navbar -->
-    <header class="bg-red-500 text-white py-4 shadow-md">
-      <nav class="container mx-auto flex justify-center space-x-6">
-        <a href="/"
-          class="px-4 py-2 border border-white rounded hover:bg-white hover:text-red-500 transition">
-          Home
-        </a>
-        <a href="/host/add-home"
-          class="px-4 py-2 border border-white rounded hover:bg-white hover:text-red-500 transition">
-          Add Home
-        </a>
-      </nav>
-    </header>
+    <%- include('partials/header') %>
 
     <!-- Main Content -->
     <main class="flex-grow flex flex-col items-center justify-center px-4">

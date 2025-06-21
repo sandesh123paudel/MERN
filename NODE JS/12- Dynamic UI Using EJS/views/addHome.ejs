@@ -1,23 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Airbnb - Add Home</title>
-    <link rel="stylesheet" href="/output.css">
-  </head>
-  <body class="bg-gray-100 text-gray-800 font-sans">
-    <!-- Navbar -->
-    <header class="bg-red-500 text-white py-4 shadow-md">
-      <nav class="container mx-auto flex justify-center space-x-6">
-        <a href="/"
-          class="px-4 py-2 border border-white rounded hover:bg-white hover:text-red-500 transition">Home</a>
-        <a href="/host/add-home"
-          class="px-4 py-2 border border-white rounded hover:bg-white hover:text-red-500 transition">Add
-          Home</a>
-      </nav>
-    </header>
+  <%- include('partials/title') %>
 
+  <body class="bg-gray-100 text-gray-800 font-sans">
+
+
+    <!-- Navbar -->
+<%- include('partials/header') %>
+   
     <!-- Main Content -->
     <main class="mt-10 flex flex-col items-center">
       <h1 class="text-3xl font-semibold mb-8">Add Your Home</h1>

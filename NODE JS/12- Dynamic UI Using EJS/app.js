@@ -24,7 +24,9 @@ app.use(express.static(path.join(rootPath, "public")));
 
 //Error 404 File
 app.use((req, res, next) => {
-  res.sendFile(path.join(rootPath, "views", "404.html"));
+  res.render("404", {
+    pageTitle: "!Error-Page Not Found",
+  });
 });
 
 const PORT = 3000;
