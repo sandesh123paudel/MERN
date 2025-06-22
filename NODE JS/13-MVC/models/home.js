@@ -1,5 +1,7 @@
-//fake database
-const registeredHome = [];
+//Core Modules
+const fs = require("fs");
+const path = require("path");
+const rootDir = require("../utils/pathUtil");
 
 module.exports = class Home {
   constructor(houseName, price, location, rating, image) {
@@ -11,10 +13,27 @@ module.exports = class Home {
   }
 
   save() {
-    registeredHome.push(this);
+    Home.fetchAll((registeredHome) => {
+      registeredHome.push(this);
+      const homeDataPath = path.join(rootDir, "data", "home.json");
+      fs.writeFile(homeDataPath, JSON.stringify(registeredHome), (error) => {
+        console.log("File Writing Concluded", error);
+      });
+    });
   }
 
-  static fetchAll() {
-    return registeredHome;
+  static fetchAll(callback) {
+    const homeDataPath = path.join(rootDir, "data", "home.json");
+    fs.readFile(homeDataPath, (err, data) => {
+     
+
+      // if (!err) {
+      //   callback(JSON.parse(data));
+      // } else {
+      //   callback([]);
+      // }
+      //or
+      callback(!err ? JSON.parse(data) : []);
+    });
   }
 };

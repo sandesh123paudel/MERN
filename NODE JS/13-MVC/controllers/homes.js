@@ -8,8 +8,6 @@ exports.getAddHome = (req, res, next) => {
 };
 
 exports.postAddHome = (req, res, next) => {
-  console.log(req.body);
-
   // const home = new Home(
   //   req.body.houseName,
   //   req.body.price,
@@ -32,13 +30,11 @@ exports.postAddHome = (req, res, next) => {
 };
 
 exports.getHomes = (req, res, next) => {
-  const registeredHome = Home.fetchAll();
-
-  console.log(registeredHome);
-
-  res.render("home", {
-    registeredHome: registeredHome,
-    pageTitle: "Home-airbnb",
-    currentPage: "home",
-  });
+  const registeredHome = Home.fetchAll((registeredHome) =>
+    res.render("home", {
+      registeredHome: registeredHome,
+      pageTitle: "Home-airbnb",
+      currentPage: "home",
+    })
+  );
 };
