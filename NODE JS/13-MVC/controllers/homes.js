@@ -25,4 +25,4 @@ exports.getHomes = (req, res, next) => {
   });
 };
 
-exports.registeredHome = registeredHome;
+

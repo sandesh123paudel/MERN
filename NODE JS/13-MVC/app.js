@@ -8,6 +8,7 @@ const express = require("express");
 const userRouter = require("./routes/userRouter");
 const { hostRouter } = require("./routes/hostRouter");
 const rootPath = require("./utils/pathUtil");
+const errorController = require("./controllers/error");
 
 const app = express();
 
@@ -23,12 +24,7 @@ app.use("/host", hostRouter);
 app.use(express.static(path.join(rootPath, "public")));
 
 //Error 404 File
-app.use((req, res, next) => {
-  res.render("404", {
-    pageTitle: "!Error-Page Not Found",
-    currentPage: "404",
-  });
-});
+app.use(errorController.get404);
 
 const PORT = 3000;
 app.listen(PORT, () => {
