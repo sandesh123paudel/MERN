@@ -29,3 +29,12 @@ exports.postAddHome = (req, res, next) => {
   });
 };
 
+exports.getHostHomes = (req, res, next) => {
+  Home.fetchAll((registeredHome) =>
+    res.render("host/host-home-list", {
+      registeredHome: registeredHome,
+      pageTitle: "Host Homes List-airbnb",
+      currentPage: "host-homes",
+    })
+  );
+};
