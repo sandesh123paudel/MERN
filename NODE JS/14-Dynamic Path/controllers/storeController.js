@@ -63,6 +63,7 @@ exports.deleteFromFavouriteList = (req, res, next) => {
   res.redirect("/favourites");
 };
 
+
 exports.getHomeDetails = (req, res, next) => {
   const homeId = req.params.homeId;
   Home.findById(homeId, (home) => {
