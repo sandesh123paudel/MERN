@@ -52,6 +52,17 @@ exports.addToFavouriteList = (req, res, next) => {
   res.redirect("/favourites");
 };
 
+exports.deleteFromFavouriteList = (req, res, next) => {
+  const homeId = req.params.id;
+  console.log("Deleting From Favourite List", homeId);
+  Favourites.deleteFromFavourites(homeId, (error) => {
+    if (error) {
+      console.log("Error while deleting:", error);
+    }
+  });
+  res.redirect("/favourites");
+};
+
 exports.getHomeDetails = (req, res, next) => {
   const homeId = req.params.homeId;
   Home.findById(homeId, (home) => {
