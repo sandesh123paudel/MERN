@@ -17,7 +17,8 @@
   <p class="text-lg font-bold text-red-500 mb-2">Rs <%= home.price %> / night</p>
   <p class="text-gray-700 ml-4 whitespace-nowrap mb-2">⭐ <%= home.rating %> / 5</p>
 
- <button class="bg-blue-400 p-2">Edit</button>
+  
+ <button class="bg-blue-400 p-2" ><a href="/host/edit-home/<%=home.id%>">Edit</a></button>
               <button class="bg-red-500 p-2">Delete</button>
   </div>
 </div>

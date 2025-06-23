@@ -29,6 +29,23 @@ exports.postAddHome = (req, res, next) => {
   });
 };
 
+exports.getEditHome = (req, res, next) => {
+  const homeId = req.params.id;
+  console.log(homeId);
+  Home.findById(homeId, (home) => {
+    if (!home) {
+      console.log("No Home Found");
+      res.redirect("/host/host-home-list");
+    } else {
+      res.render("host/edit-home", {
+        home: home,
+        pageTitle: "Edit-Home-airbnb",
+        currentPage: "addHome",
+      });
+    }
+  });
+};
+
 exports.getHostHomes = (req, res, next) => {
   Home.fetchAll((registeredHome) =>
     res.render("host/host-home-list", {
