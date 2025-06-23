@@ -24,7 +24,7 @@ app.use("/host", hostRouter);
 app.use(express.static(path.join(rootPath, "public")));
 
 //Error 404 File
-// app.use(errorController.get404);
+app.use(errorController.get404);
 
 const PORT = 3000;
 app.listen(PORT, () => {
