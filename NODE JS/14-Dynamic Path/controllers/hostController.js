@@ -1,9 +1,10 @@
 const Home = require("../models/home");
 
 exports.getAddHome = (req, res, next) => {
-  res.render("host/addHome", {
+  res.render("host/edit-home", {
     pageTitle: "Add Home-airbnb",
     currentPage: "addHome",
+    editing: false,
   });
 };
 
@@ -31,7 +32,8 @@ exports.postAddHome = (req, res, next) => {
 
 exports.getEditHome = (req, res, next) => {
   const homeId = req.params.id;
-  console.log(homeId);
+  const editing = req.query.editing === "true";
+  console.log(homeId, editing);
   Home.findById(homeId, (home) => {
     if (!home) {
       console.log("No Home Found");
@@ -40,7 +42,8 @@ exports.getEditHome = (req, res, next) => {
       res.render("host/edit-home", {
         home: home,
         pageTitle: "Edit-Home-airbnb",
-        currentPage: "addHome",
+        currentPage: "host-homes",
+        editing: editing,
       });
     }
   });
