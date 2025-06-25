@@ -23,6 +23,17 @@
           required
           class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-red-400" />
 
+
+           <label for="description" class="block text-gray-700 font-medium mb-2">Description</label>
+        <textarea
+          type="text"
+          id="description"
+          rows="5"
+          name="description"
+        
+          required
+          class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-red-400" ><%= editing ? home.description : '' %></textarea>
+          
         <label for="price-pn" class="block text-gray-700 font-medium mb-2">Price
           Per Night </label>
         <input
