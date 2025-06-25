@@ -30,8 +30,9 @@ exports.postAddHome = (req, res, next) => {
 exports.getEditHome = (req, res, next) => {
   const homeId = req.params.id;
   const editing = req.query.editing === "true";
-  console.log(homeId, editing);
-  Home.findById(homeId, (home) => {
+
+  Home.findById(homeId).then(([homes]) => {
+    const home = homes[0];
     if (!home) {
       console.log("No Home Found");
       res.redirect("/host/host-home-list");
@@ -67,13 +68,17 @@ exports.postEditHome = (req, res, next) => {
 exports.postDeleteHome = (req, res, next) => {
   const homeId = req.params.homeId;
   console.log(homeId);
-  Home.deleteById(homeId, (error) => {
-    if (error) {
-      console.log("Error while deleting:", error);
-    }
-  });
 
-  res.redirect("/host/host-home-list");
+
+  Home.deleteById(
+    homeId)
+      .then(() => {
+        res.redirect("/host/host-home-list");
+      })
+      .catch((error) => {
+        console.log("Error while deleting", error);
+      }
+  );
 };
 
 exports.getHostHomes = (req, res, next) => {
