@@ -45,7 +45,8 @@ exports.getBookings = (req, res, next) => {
 };
 
 exports.getFavouriteList = (req, res, next) => {
-  Favourites.find().then((favourites) => {
+  /** 
+   * Favourites.find().then((favourites) => {
     favourites = favourites.map((fav) => fav.houseId.toString());
     Home.find().then((registeredHome) => {
       const favouriteHomes = registeredHome.filter((home) =>
@@ -58,38 +59,49 @@ exports.getFavouriteList = (req, res, next) => {
       });
     });
   });
+  */
+
+  //Can be done simply like this using mongoose
+  Favourites.find()
+    .populate("houseId")
+    .then((favourites) => {
+      const favouriteHomes = favourites.map((favourite) => favourite.houseId);
+      res.render("store/favourite-list", {
+        pageTitle: "My Favourites-airbnb",
+        currentPage: "favourites",
+        favouriteHomes: favouriteHomes,
+      });
+    });
 };
 
 exports.postAddToFavourite = (req, res, next) => {
   const homeId = req.body.id;
   Favourites.findOne({ houseId: homeId })
-    .then((existingFav) => {
-      if (existingFav) {
-        console.log("Already Marked As Favourite");
+    .then((fav) => {
+      if (fav) {
+        console.log("Already marked as favourite");
       } else {
-        const fav = new Favourites({ houseId: homeId });
+        fav = new Favourites({ houseId: homeId });
         fav.save().then((result) => {
-          console.log("Fav Added:", result);
+          console.log("Fav added: ", result);
         });
       }
-    })
-    .then(() => {
       res.redirect("/favourites");
     })
     .catch((err) => {
-      console.log("Error while marking favourite", err);
+      console.log("Error while marking favourite: ", err);
     });
 };
 
 exports.postRemoveFromFavourite = (req, res, next) => {
   const homeId = req.params.id;
-  console.log("Deleting From Favourite List", homeId);
-  Favourites.deleteFromFavourites(homeId)
+
+  Favourites.findOneAndDelete({ houseId: homeId })
     .then((result) => {
       console.log("Fav Deleted", result);
     })
     .catch((err) => {
-      console.log("Error while deleting favourite:", error);
+      console.log("Error while deleting favourite:", err);
     })
     .finally(() => {
       res.redirect("/favourites");

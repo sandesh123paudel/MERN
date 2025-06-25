@@ -60,7 +60,7 @@ exports.postEditHome = (req, res, next) => {
       home
         .save()
         .then((result) => {
-          console.log("Home Edited Successfully", result);
+          console.log("Home Edited Successfully");
         })
         .catch((err) => {
           console.log("Error While Updating", err);
@@ -68,7 +68,7 @@ exports.postEditHome = (req, res, next) => {
       res.redirect("/host/host-home-list");
     })
     .catch((err) => {
-      console.log("Errow while finding home");
+      console.log("Error while finding home");
     });
 };
 
