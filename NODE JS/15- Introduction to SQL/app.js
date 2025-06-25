@@ -9,6 +9,8 @@ const storeRouter = require("./routes/storeRouter");
 const hostRouter = require("./routes/hostRouter");
 const rootPath = require("./utils/pathUtil");
 const errorController = require("./controllers/error");
+const db = require("./utils/databaseUtil");
+
 
 const app = express();
 

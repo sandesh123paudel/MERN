@@ -63,16 +63,16 @@ exports.postDeleteHome = (req, res, next) => {
       console.log("Error while deleting:", error);
     }
   });
-  
+
   res.redirect("/host/host-home-list");
 };
 
 exports.getHostHomes = (req, res, next) => {
-  Home.fetchAll((registeredHome) =>
+  Home.fetchAll().then(([registeredHome, fields]) => {
     res.render("host/host-home-list", {
       registeredHome: registeredHome,
       pageTitle: "Host Homes List-airbnb",
       currentPage: "host-homes",
-    })
-  );
+    });
+  });
 };

@@ -1,23 +1,24 @@
 const Favourites = require("../models/favourites");
 const Home = require("../models/home");
+
 exports.getIndex = (req, res, next) => {
-  Home.fetchAll((registeredHome) =>
+  Home.fetchAll().then(([registeredHome, fields]) => {
     res.render("store/index", {
       registeredHome: registeredHome,
       pageTitle: "Home-airbnb",
       currentPage: "index",
-    })
-  );
+    });
+  });
 };
 
 exports.getHomes = (req, res, next) => {
-  Home.fetchAll((registeredHome) =>
+  Home.fetchAll().then(([registeredHome, fields]) => {
     res.render("store/home-list", {
       registeredHome: registeredHome,
       pageTitle: "Homes List-airbnb",
       currentPage: "home",
-    })
-  );
+    });
+  });
 };
 
 exports.getBookings = (req, res, next) => {
@@ -29,7 +30,7 @@ exports.getBookings = (req, res, next) => {
 
 exports.getFavouriteList = (req, res, next) => {
   Favourites.getFavourites((favourites) => {
-    Home.fetchAll((registeredHome) => {
+    Home.fetchAll().then(([registeredHome, fields]) => {
       const favouriteHomes = registeredHome.filter((home) =>
         favourites.includes(home.id)
       );
@@ -62,7 +63,6 @@ exports.deleteFromFavouriteList = (req, res, next) => {
   });
   res.redirect("/favourites");
 };
-
 
 exports.getHomeDetails = (req, res, next) => {
   const homeId = req.params.homeId;
