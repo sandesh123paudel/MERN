@@ -10,7 +10,15 @@ exports.getAddHome = (req, res, next) => {
 
 exports.postAddHome = (req, res, next) => {
   const { houseName, description, price, location, rating, image } = req.body;
-  const home = new Home(houseName, description, price, location, rating, image);
+  const home = new Home({
+    //houseName:houseName -- being both name same we can use just a single only too
+    houseName,
+    description,
+    price,
+    location,
+    rating,
+    image,
+  });
   home.save().then(() => {
     console.log("Home Saved Successfully");
   });
@@ -40,37 +48,40 @@ exports.getEditHome = (req, res, next) => {
 exports.postEditHome = (req, res, next) => {
   const { id, houseName, description, price, location, rating, image } =
     req.body;
-  const home = new Home(
-    houseName,
-    description,
-    price,
-    location,
-    rating,
-    image,
-    id
-  );
 
-  home.save().then(() => {
-    console.log("Home Edited Successfully");
-  });
-
-  res.redirect("/host/host-home-list");
+  Home.findById(id)
+    .then((home) => {
+      home.houseName = houseName;
+      home.description = description;
+      home.price = price;
+      home.location = location;
+      home.rating = rating;
+      home.image = image;
+      home
+        .save()
+        .then((result) => {
+          console.log("Home Edited Successfully", result);
+        })
+        .catch((err) => {
+          console.log("Error While Updating", err);
+        });
+      res.redirect("/host/host-home-list");
+    })
+    .catch((err) => {
+      console.log("Errow while finding home");
+    });
 };
 
 exports.postDeleteHome = (req, res, next) => {
   const homeId = req.params.homeId;
   console.log(homeId);
-  Home.deleteById(homeId)
-    .then(() => {
-      res.redirect("/host/host-home-list");
-    })
-    .catch((error) => {
-      console.log("Error while deleting", error);
-    });
+  Home.findByIdAndDelete(homeId).then(() => {
+    res.redirect("/host/host-home-list");
+  });
 };
 
 exports.getHostHomes = (req, res, next) => {
-  Home.fetchAll().then((registeredHome) => {
+  Home.find().then((registeredHome) => {
     res.render("host/host-home-list", {
       registeredHome: registeredHome,
       pageTitle: "Host Homes List-airbnb",

@@ -9,7 +9,7 @@ const storeRouter = require("./routes/storeRouter");
 const hostRouter = require("./routes/hostRouter");
 const rootPath = require("./utils/pathUtil");
 const errorController = require("./controllers/error");
-const {MongoConnect} = require("./utils/databaseUtil");
+const { default: mongoose } = require("mongoose");
 
 const app = express();
 
@@ -28,9 +28,17 @@ app.use(express.static(path.join(rootPath, "public")));
 app.use(errorController.get404);
 
 const PORT = 3000;
+const DB_PATH =
+  "mongodb+srv://root:root@mernstack.tzml0yk.mongodb.net/airbnb?retryWrites=true&w=majority&appName=MERNStack";
 
-MongoConnect(() => {
-  app.listen(PORT, () => {
-    console.log(`Server running on address: http://localhost:${PORT}`);
+mongoose
+  .connect(DB_PATH)
+  .then(() => {
+    console.log("Connected to Mongo");
+    app.listen(PORT, () => {
+      console.log(`Server running on address: http://localhost:${PORT}`);
+    });
+  })
+  .catch((err) => {
+    console.log("Error while connecting to Mongo", err);
   });
-});
