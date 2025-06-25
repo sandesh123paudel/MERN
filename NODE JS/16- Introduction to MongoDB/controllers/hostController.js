@@ -22,8 +22,7 @@ exports.getEditHome = (req, res, next) => {
   const homeId = req.params.id;
   const editing = req.query.editing === "true";
 
-  Home.findById(homeId).then(([homes]) => {
-    const home = homes[0];
+  Home.findById(homeId).then((home) => {
     if (!home) {
       console.log("No Home Found");
       res.redirect("/host/host-home-list");
@@ -51,7 +50,9 @@ exports.postEditHome = (req, res, next) => {
     id
   );
 
-  home.save();
+  home.save().then(() => {
+    console.log("Home Edited Successfully");
+  });
 
   res.redirect("/host/host-home-list");
 };
@@ -59,7 +60,6 @@ exports.postEditHome = (req, res, next) => {
 exports.postDeleteHome = (req, res, next) => {
   const homeId = req.params.homeId;
   console.log(homeId);
-
   Home.deleteById(homeId)
     .then(() => {
       res.redirect("/host/host-home-list");
@@ -70,7 +70,7 @@ exports.postDeleteHome = (req, res, next) => {
 };
 
 exports.getHostHomes = (req, res, next) => {
-  Home.fetchAll().then(([registeredHome, fields]) => {
+  Home.fetchAll().then((registeredHome) => {
     res.render("host/host-home-list", {
       registeredHome: registeredHome,
       pageTitle: "Host Homes List-airbnb",
