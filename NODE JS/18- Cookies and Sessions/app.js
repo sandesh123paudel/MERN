@@ -18,6 +18,15 @@ const app = express();
 app.set("view engine", "ejs");
 app.set("views", "views");
 
+app.use((req, res, next) => {
+  //Checking if the user is logged in by checking the cookie
+  req.isLoggedIn = req.get("Cookie")
+    ? req.get("Cookie").split("=")[1] === "true"
+    : false;
+
+  next();
+});
+
 app.use(express.urlencoded());
 app.use(authRouter);
 app.use(storeRouter);
@@ -27,7 +36,7 @@ app.use("/host", (req, res, next) => {
   }
   next();
 });
-app.use(hostRouter);
+app.use("/host", hostRouter);
 
 //Giving access to css files
 app.use(express.static(path.join(rootPath, "public")));

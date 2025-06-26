@@ -25,8 +25,15 @@
 
     <% }%>
 
+    <% if(!isLoggedIn) {%>
     <a href="/login"
       class="px-4 py-2 <%= currentPage==='login'?'bg-white text-red-500 border border-white rounded':' bg-red text-white border border-white rounded hover:bg-white hover:text-red-500 ' %> ">Login</a>
+    <%} else{%>
+    <form action="/logout" method="POST">
+      <button type="submit"
+        class="px-4 py-2 <%= currentPage==='login'?'bg-white text-red-500 border border-white rounded':' bg-red text-white border border-white rounded hover:bg-white hover:text-red-500 ' %> ">LogOut</button>
+    </form>
+    <%}%>
 
   </nav>
 </header>
