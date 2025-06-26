@@ -3,6 +3,8 @@ const path = require("path");
 
 //External Module
 const express = require("express");
+const session = require("express-session");
+const MongoSBStore = require("connect-mongodb-session")(session);
 
 //Local Module
 const storeRouter = require("./routes/storeRouter");
@@ -18,16 +20,28 @@ const app = express();
 app.set("view engine", "ejs");
 app.set("views", "views");
 
-app.use((req, res, next) => {
-  //Checking if the user is logged in by checking the cookie
-  req.isLoggedIn = req.get("Cookie")
-    ? req.get("Cookie").split("=")[1] === "true"
-    : false;
+const DB_PATH =
+  "mongodb+srv://root:root@mernstack.tzml0yk.mongodb.net/airbnb?retryWrites=true&w=majority&appName=MERNStack";
 
-  next();
+//To Store Session in MOngoDB
+const store = new MongoSBStore({
+  uri: DB_PATH,
+  collection: "sessions",
 });
 
 app.use(express.urlencoded());
+
+app.use(
+  session({
+    secret: "mernstacklearning",
+    resave: false,
+    saveUninitialized: true,
+    store: store,
+  })
+);
+
+
+
 app.use(authRouter);
 app.use(storeRouter);
 app.use("/host", (req, res, next) => {
@@ -45,8 +59,6 @@ app.use(express.static(path.join(rootPath, "public")));
 app.use(errorController.get404);
 
 const PORT = 3000;
-const DB_PATH =
-  "mongodb+srv://root:root@mernstack.tzml0yk.mongodb.net/airbnb?retryWrites=true&w=majority&appName=MERNStack";
 
 mongoose
   .connect(DB_PATH)
