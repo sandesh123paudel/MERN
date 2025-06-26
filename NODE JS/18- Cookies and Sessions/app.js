@@ -21,7 +21,13 @@ app.set("views", "views");
 app.use(express.urlencoded());
 app.use(authRouter);
 app.use(storeRouter);
-app.use("/host", hostRouter);
+app.use("/host", (req, res, next) => {
+  if (!req.isLoggedIn) {
+    return res.redirect("/login");
+  }
+  next();
+});
+app.use(hostRouter);
 
 //Giving access to css files
 app.use(express.static(path.join(rootPath, "public")));
