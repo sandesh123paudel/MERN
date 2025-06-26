@@ -1,0 +1,32 @@
+<%- include('../partials/title') %>
+  </head>
+  <body>
+    <%- include('../partials/header') %>
+    <main class="container mx-auto bg-white shadow-lg rounded-lg p-8 mt-10 max-w-6xl">
+      <h2 class="text-3xl text-red-500 font-bold text-center mb-6">
+        Here are your favourite homes:
+      </h2>
+      <div class="flex flex-wrap justify-center ">
+        <% favouriteHomes.forEach(home => { %>
+          <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300 w-full max-w-sm m-4">
+  <img src="<%= home.image %>" alt="<%= home.houseName %>" class="w-full h-48 object-cover">
+  <div class="p-4">
+    <h3 class="text-xl font-semibold text-gray-800 mb-2"><%= home.houseName %></h3>
+    <p class="text-gray-600 mb-2"><i class="fas fa-map-marker-alt mr-2"></i><%= home.location %></p>
+      
+  <p class="text-lg font-bold text-red-500 mb-2">Rs <%= home.price %> / night</p>
+  <p class="text-gray-700 ml-4 whitespace-nowrap mb-2">⭐ <%= home.rating %> / 5</p>
+
+  <form action="/delete-favourite/<%=home._id%>" method="POST">
+    <button type="submit" class="bg-green-500 text-white py-2 px-2 rounded-full">Delete</button>
+  </form>
+
+
+  </div>
+</div>
+
+        <% }) %>
+      </div>
+    </main>
+  </body>
+</html>

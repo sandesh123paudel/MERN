@@ -1,0 +1,39 @@
+ <header class="bg-red-500 text-white py-4 shadow-md">
+  <nav class="container mx-auto flex justify-center ml-5 space-x-6">
+
+    <a href="/"
+      class="px-4 py-2 <%= currentPage==='index'?'bg-white text-red-500 border border-white rounded':' bg-red text-white border border-white rounded hover:bg-white hover:text-red-500 ' %>  ">airbnb</a>
+
+    <% if (isLoggedIn) { %>
+
+    <a href="/homes"
+      class="px-4 py-2 <%= currentPage==='home'?'bg-white text-red-500 border border-white rounded':' bg-red text-white border border-white rounded hover:bg-white hover:text-red-500 ' %>  ">Homes-List</a>
+
+    <a href="/bookings"
+      class="px-4 py-2 <%= currentPage==='bookings'?'bg-white text-red-500 border border-white rounded':' bg-red text-white border border-white rounded hover:bg-white hover:text-red-500 ' %> ">Bookings</a>
+
+    <a href="/host/host-home-list"
+      class="px-4 py-2 <%= currentPage==='host-homes'?'bg-white text-red-500 border border-white rounded':' bg-red text-white border border-white rounded hover:bg-white hover:text-red-500 ' %>  ">Host
+      Homes</a>
+
+    <a href="/host/add-home"
+      class="px-4 py-2 <%= currentPage==='addHome'?'bg-white text-red-500 border border-white rounded':' bg-red text-white border border-white rounded hover:bg-white hover:text-red-500 ' %>  ">Add
+      Home</a>
+
+    <a href="/favourites"
+      class="px-4 py-2 <%= currentPage==='favourites'?'bg-white text-red-500 border border-white rounded':' bg-red text-white border border-white rounded hover:bg-white hover:text-red-500 ' %> ">Favourites</a>
+
+    <% }%>
+
+    <% if(!isLoggedIn) {%>
+    <a href="/login"
+      class="px-4 py-2 <%= currentPage==='login'?'bg-white text-red-500 border border-white rounded':' bg-red text-white border border-white rounded hover:bg-white hover:text-red-500 ' %> ">Login</a>
+    <%} else{%>
+    <form action="/logout" method="POST">
+      <button type="submit"
+        class="px-4 py-2 <%= currentPage==='login'?'bg-white text-red-500 border border-white rounded':' bg-red text-white border border-white rounded hover:bg-white hover:text-red-500 ' %> ">LogOut</button>
+    </form>
+    <%}%>
+
+  </nav>
+</header>
