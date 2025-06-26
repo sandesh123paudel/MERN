@@ -10,6 +10,7 @@ const hostRouter = require("./routes/hostRouter");
 const rootPath = require("./utils/pathUtil");
 const errorController = require("./controllers/error");
 const { default: mongoose } = require("mongoose");
+const authRouter = require("./routes/authRouter");
 
 const app = express();
 
@@ -18,6 +19,7 @@ app.set("view engine", "ejs");
 app.set("views", "views");
 
 app.use(express.urlencoded());
+app.use(authRouter);
 app.use(storeRouter);
 app.use("/host", hostRouter);
 
