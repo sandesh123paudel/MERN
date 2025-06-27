@@ -23,3 +23,20 @@ exports.postLogOut = (req, res, next) => {
     res.redirect("/login");
   });
 };
+
+////Sign Up
+
+exports.getSignup = (req, res, next) => {
+  res.render("auth/signup", {
+    pageTitle: "Signup-airbnb",
+    currentPage: "signup",
+    isLoggedIn: false,
+  });
+};
+
+exports.postSignup = (req, res, next) => {
+  console.log(req.body);
+  req.session.isLoggedIn = true;
+
+  res.redirect("/");
+};

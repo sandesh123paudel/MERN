@@ -1,39 +1,39 @@
- <header class="bg-red-500 text-white py-4 shadow-md">
-  <nav class="container mx-auto flex justify-center ml-5 space-x-6">
-
+<header
+  class="bg-gradient-to-r from-pink-400 via-red-500 to-red-600 text-white py-5 shadow-xl sticky top-0 z-50">
+  <nav
+    class="container mx-auto flex flex-wrap justify-center items-center gap-4 md:gap-8">
     <a href="/"
-      class="px-4 py-2 <%= currentPage==='index'?'bg-white text-red-500 border border-white rounded':' bg-red text-white border border-white rounded hover:bg-white hover:text-red-500 ' %>  ">airbnb</a>
-
+      class="flex items-center gap-2 px-5 py-2 text-lg font-bold tracking-wide transition-all duration-200 shadow-sm
+      <%= currentPage==='index'?'bg-white text-red-500 border border-white rounded-full':'bg-transparent hover:bg-white hover:text-red-500 border border-white rounded-full' %>">
+      <svg class="w-6 h-6 text-black-500" fill="none" stroke="currentColor"
+        stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round"
+          stroke-linejoin="round" d="M12 3l8 8-8 8-8-8z" /></svg>
+      airbnb
+    </a>
     <% if (isLoggedIn) { %>
-
     <a href="/homes"
-      class="px-4 py-2 <%= currentPage==='home'?'bg-white text-red-500 border border-white rounded':' bg-red text-white border border-white rounded hover:bg-white hover:text-red-500 ' %>  ">Homes-List</a>
-
+      class="px-5 py-2 text-base font-semibold transition-all duration-200 shadow-sm <%= currentPage==='home'?'bg-white text-red-500 border border-white rounded-full':'bg-transparent hover:bg-white hover:text-red-500 border border-white rounded-full' %>">Homes-List</a>
     <a href="/bookings"
-      class="px-4 py-2 <%= currentPage==='bookings'?'bg-white text-red-500 border border-white rounded':' bg-red text-white border border-white rounded hover:bg-white hover:text-red-500 ' %> ">Bookings</a>
-
+      class="px-5 py-2 text-base font-semibold transition-all duration-200 shadow-sm <%= currentPage==='bookings'?'bg-white text-red-500 border border-white rounded-full':'bg-transparent hover:bg-white hover:text-red-500 border border-white rounded-full' %>">Bookings</a>
     <a href="/host/host-home-list"
-      class="px-4 py-2 <%= currentPage==='host-homes'?'bg-white text-red-500 border border-white rounded':' bg-red text-white border border-white rounded hover:bg-white hover:text-red-500 ' %>  ">Host
+      class="px-5 py-2 text-base font-semibold transition-all duration-200 shadow-sm <%= currentPage==='host-homes'?'bg-white text-red-500 border border-white rounded-full':'bg-transparent hover:bg-white hover:text-red-500 border border-white rounded-full' %>">Host
       Homes</a>
-
     <a href="/host/add-home"
-      class="px-4 py-2 <%= currentPage==='addHome'?'bg-white text-red-500 border border-white rounded':' bg-red text-white border border-white rounded hover:bg-white hover:text-red-500 ' %>  ">Add
+      class="px-5 py-2 text-base font-semibold transition-all duration-200 shadow-sm <%= currentPage==='addHome'?'bg-white text-red-500 border border-white rounded-full':'bg-transparent hover:bg-white hover:text-red-500 border border-white rounded-full' %>">Add
       Home</a>
-
     <a href="/favourites"
-      class="px-4 py-2 <%= currentPage==='favourites'?'bg-white text-red-500 border border-white rounded':' bg-red text-white border border-white rounded hover:bg-white hover:text-red-500 ' %> ">Favourites</a>
-
+      class="px-5 py-2 text-base font-semibold transition-all duration-200 shadow-sm <%= currentPage==='favourites'?'bg-white text-red-500 border border-white rounded-full':'bg-transparent hover:bg-white hover:text-red-500 border border-white rounded-full' %>">Favourites</a>
     <% }%>
-
     <% if(!isLoggedIn) {%>
     <a href="/login"
-      class="px-4 py-2 <%= currentPage==='login'?'bg-white text-red-500 border border-white rounded':' bg-red text-white border border-white rounded hover:bg-white hover:text-red-500 ' %> ">Login</a>
+      class="px-5 py-2 text-base font-semibold transition-all duration-200 shadow-sm <%= currentPage==='login'?'bg-white text-red-500 border border-white rounded-full':'bg-transparent hover:bg-white hover:text-red-500 border border-white rounded-full' %>">Login</a>
+    <a href="/signup"
+      class="px-5 py-2 text-base font-semibold transition-all duration-200 shadow-sm <%= currentPage==='signup'?'bg-white text-red-500 border border-white rounded-full':'bg-transparent hover:bg-white hover:text-red-500 border border-white rounded-full' %>">SignUp</a>
     <%} else{%>
-    <form action="/logout" method="POST">
+    <form action="/logout" method="POST" class="inline">
       <button type="submit"
-        class="px-4 py-2 <%= currentPage==='login'?'bg-white text-red-500 border border-white rounded':' bg-red text-white border border-white rounded hover:bg-white hover:text-red-500 ' %> ">LogOut</button>
+        class="px-5 py-2 text-base font-semibold transition-all duration-200 shadow-sm bg-transparent hover:bg-white hover:text-red-500 border border-white rounded-full">LogOut</button>
     </form>
     <%}%>
-
   </nav>
 </header>
