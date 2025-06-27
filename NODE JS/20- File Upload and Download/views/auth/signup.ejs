@@ -1,0 +1,139 @@
+<%- include('../partials/title') %>
+<body
+  class="min-h-screen bg-gradient-to-br from-pink-100 via-white to-red-200 flex flex-col">
+  <%- include('../partials/header') %>
+
+  <main class="flex-grow flex items-center justify-center">
+    <div
+      class="bg-white/95 shadow-2xl rounded-3xl p-12 w-full max-w-2xl border border-red-200 ring-2 ring-red-100/60 backdrop-blur-md">
+      <h2
+        class="text-5xl text-red-500 font-extrabold text-center mb-10 tracking-tight drop-shadow-lg">Create
+        Your Account</h2>
+      <p class="text-center text-gray-500 mb-8 text-lg">Sign up to unlock
+        exclusive features and start your journey!</p>
+
+      <form action="/signup" method="POST" class="space-y-7">
+        <%- include('../partials/errors', { errors: errors }) %>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-7">
+          <div>
+            <label for="firstName"
+              class="block text-gray-700 font-semibold mb-2">First Name</label>
+            <input
+              type="text"
+              id="firstName"
+              name="firstName"
+              value="<%= oldInput.firstName %>"
+              placeholder="Enter first name"
+              required
+              class="w-full px-5 py-3 border border-gray-300 rounded-2xl focus:outline-none focus:ring-2 focus:ring-pink-300 bg-gray-50 shadow-sm transition">
+          </div>
+          <div>
+            <label for="lastName"
+              class="block text-gray-700 font-semibold mb-2">Last Name</label>
+            <input
+              type="text"
+              id="lastName"
+              name="lastName"
+              value="<%= oldInput.lastName %>"
+              placeholder="Enter last name"
+              class="w-full px-5 py-3 border border-gray-300 rounded-2xl focus:outline-none focus:ring-2 focus:ring-pink-300 bg-gray-50 shadow-sm transition">
+          </div>
+        </div>
+
+        <div>
+          <label for="email"
+            class="block text-gray-700 font-semibold mb-2">Email</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            value="<%= oldInput.email %>"
+            placeholder="Enter your email"
+            required
+            class="w-full px-5 py-3 border border-gray-300 rounded-2xl focus:outline-none focus:ring-2 focus:ring-pink-300 bg-gray-50 shadow-sm transition">
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-7">
+          <div>
+            <label for="password"
+              class="block text-gray-700 font-semibold mb-2">Password</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              value="<%= oldInput.password %>"
+              placeholder="Enter password"
+              required
+              class="w-full px-5 py-3 border border-gray-300 rounded-2xl focus:outline-none focus:ring-2 focus:ring-pink-300 bg-gray-50 shadow-sm transition">
+          </div>
+          <div>
+            <label for="confirmPassword"
+              class="block text-gray-700 font-semibold mb-2">Confirm
+              Password</label>
+            <input
+              type="password"
+              id="confirmPassword"
+              name="confirmPassword"
+              value="<%= oldInput.confirmPassword %>"
+              placeholder="Confirm password"
+              required
+              class="w-full px-5 py-3 border border-gray-300 rounded-2xl focus:outline-none focus:ring-2 focus:ring-pink-300 bg-gray-50 shadow-sm transition">
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-gray-700 font-semibold mb-2">User
+            Type</label>
+          <select
+            id="userType"
+            name="userType"
+            required
+            class="w-full px-5 py-3 border border-gray-300 rounded-2xl focus:outline-none focus:ring-2 focus:ring-pink-300 bg-gray-50 shadow-sm transition">
+            <option value disabled <%=!oldInput.userType ? 'selected' : ''
+              %>>Select user type</option>
+            <option value="guest" <%=oldInput.userType === 'guest' ? 'selected'
+              : '' %>>Guest</option>
+            <option value="host" <%=oldInput.userType === 'host' ? 'selected' :
+              '' %>>Host</option>
+
+          </select>
+        </div>
+
+        <div class="flex items-center justify-between">
+          <label class="inline-flex items-center">
+            <input
+              type="checkbox"
+              name="terms"
+              value="checked"
+              required
+              class="form-checkbox h- w-5 text-pink-500 rounded focus:ring-pink-300">
+            <span class="ml-3 text-gray-700">I agree to the <a href="#"
+                class="underline text-pink-500 hover:text-pink-700">terms and
+                conditions</a></span>
+          </label>
+        </div>
+
+        <div>
+          <button
+            type="submit"
+            class="w-full bg-gradient-to-r from-pink-400 to-red-500 hover:from-pink-500 hover:to-red-600 text-white font-bold py-3 px-6 rounded-full shadow-xl transition duration-200 focus:outline-none focus:ring-2 focus:ring-pink-300 text-xl tracking-wide">
+            <span class="inline-flex items-center gap-2">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor"
+                stroke-width="2" viewBox="0 0 24 24"><path
+                  stroke-linecap="round" stroke-linejoin="round"
+                  d="M16 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2m16-10V7a4 4 0 00-4-4H8a4 4 0 00-4 4v4m16 0a4 4 0 01-4 4H8a4 4 0 01-4-4m16 0V7m0 4v4" /></svg>
+              Register
+            </span>
+          </button>
+        </div>
+        <div class="text-center text-gray-500 mt-4">
+          Already have an account? <a href="/login"
+            class="text-pink-500 hover:text-pink-700 underline font-semibold">Login</a>
+        </div>
+      </form>
+    </div>
+  </main>
+
+
+</body>
