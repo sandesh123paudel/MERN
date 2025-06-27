@@ -18,11 +18,13 @@
     "tailwindcss": "^3.4.17"
   },
   "dependencies": {
+    "bcryptjs": "^3.0.2",
     "body-parser": "^2.2.0",
     "connect-mongodb-session": "^5.0.0",
     "ejs": "^3.1.10",
     "express": "^5.1.0",
     "express-session": "^1.18.1",
+    "express-validator": "^7.2.1",
     "mongodb": "^6.17.0",
     "mongoose": "^8.16.0",
     "mysql2": "^3.14.1"

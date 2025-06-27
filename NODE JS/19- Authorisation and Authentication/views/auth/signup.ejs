@@ -11,7 +11,10 @@
         Your Account</h2>
       <p class="text-center text-gray-500 mb-8 text-lg">Sign up to unlock
         exclusive features and start your journey!</p>
+
       <form action="/signup" method="POST" class="space-y-7">
+        <%- include('../partials/errors', { errors: errors }) %>
+
         <div class="grid grid-cols-1 md:grid-cols-2 gap-7">
           <div>
             <label for="firstName"
@@ -20,6 +23,7 @@
               type="text"
               id="firstName"
               name="firstName"
+              value="<%= oldInput.firstName %>"
               placeholder="Enter first name"
               required
               class="w-full px-5 py-3 border border-gray-300 rounded-2xl focus:outline-none focus:ring-2 focus:ring-pink-300 bg-gray-50 shadow-sm transition">
@@ -31,6 +35,7 @@
               type="text"
               id="lastName"
               name="lastName"
+              value="<%= oldInput.lastName %>"
               placeholder="Enter last name"
               class="w-full px-5 py-3 border border-gray-300 rounded-2xl focus:outline-none focus:ring-2 focus:ring-pink-300 bg-gray-50 shadow-sm transition">
           </div>
@@ -43,6 +48,7 @@
             type="email"
             id="email"
             name="email"
+            value="<%= oldInput.email %>"
             placeholder="Enter your email"
             required
             class="w-full px-5 py-3 border border-gray-300 rounded-2xl focus:outline-none focus:ring-2 focus:ring-pink-300 bg-gray-50 shadow-sm transition">
@@ -56,6 +62,7 @@
               type="password"
               id="password"
               name="password"
+              value="<%= oldInput.password %>"
               placeholder="Enter password"
               required
               class="w-full px-5 py-3 border border-gray-300 rounded-2xl focus:outline-none focus:ring-2 focus:ring-pink-300 bg-gray-50 shadow-sm transition">
@@ -68,6 +75,7 @@
               type="password"
               id="confirmPassword"
               name="confirmPassword"
+              value="<%= oldInput.confirmPassword %>"
               placeholder="Confirm password"
               required
               class="w-full px-5 py-3 border border-gray-300 rounded-2xl focus:outline-none focus:ring-2 focus:ring-pink-300 bg-gray-50 shadow-sm transition">
@@ -82,9 +90,13 @@
             name="userType"
             required
             class="w-full px-5 py-3 border border-gray-300 rounded-2xl focus:outline-none focus:ring-2 focus:ring-pink-300 bg-gray-50 shadow-sm transition">
-            <option value disabled selected>Select user type</option>
-            <option value="guest">Guest</option>
-            <option value="host">Host</option>
+            <option value disabled <%=!oldInput.userType ? 'selected' : ''
+              %>>Select user type</option>
+            <option value="guest" <%=oldInput.userType === 'guest' ? 'selected'
+              : '' %>>Guest</option>
+            <option value="host" <%=oldInput.userType === 'host' ? 'selected' :
+              '' %>>Host</option>
+
           </select>
         </div>
 
@@ -92,9 +104,10 @@
           <label class="inline-flex items-center">
             <input
               type="checkbox"
-              name="agree"
+              name="terms"
+              value="checked"
               required
-              class="form-checkbox h-5 w-5 text-pink-500 rounded focus:ring-pink-300">
+              class="form-checkbox h- w-5 text-pink-500 rounded focus:ring-pink-300">
             <span class="ml-3 text-gray-700">I agree to the <a href="#"
                 class="underline text-pink-500 hover:text-pink-700">terms and
                 conditions</a></span>
@@ -121,4 +134,6 @@
       </form>
     </div>
   </main>
+
+
 </body>
