@@ -13,7 +13,9 @@
             stroke-linejoin="round" d="M12 3l8 8-8 8-8-8z" /></svg>
         airbnb
       </a>
-      <% if (isLoggedIn) { %>
+      <% if (isLoggedIn ) { %>
+      <% if (user && user.userType==='guest' ) { %>
+
       <a href="/homes"
         class="flex items-center gap-2 px-5 py-2 text-base font-semibold transition-all duration-200 shadow-sm <%= currentPage==='home'?'bg-white text-red-500 border-white rounded-full':'bg-gradient-to-r from-pink-400/80 via-red-500/80 to-red-600/80 hover:bg-white hover:text-white border-white rounded-full' %>">
         <svg
@@ -34,6 +36,18 @@
             d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
         Bookings
       </a>
+      <a href="/favourites"
+        class="flex items-center gap-2 px-5 py-2 text-base font-semibold transition-all duration-200 shadow-sm <%= currentPage==='favourites'?'bg-white text-red-500 border-white rounded-full':'bg-gradient-to-r from-pink-400/80 via-red-500/80 to-red-600/80 hover:bg-white hover:text-white border-white rounded-full' %>">
+        <svg
+          class="w-5 h-5 <%= currentPage==='favourites' ? 'text-pink-500' : 'text-white group-hover:text-pink-500' %>"
+          fill="none" stroke="currentColor" stroke-width="2"
+          viewBox="0 0 24 24"><path stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M4.318 6.318a4.5 4.5 0 016.364 0L12 7.636l1.318-1.318a4.5 4.5 0 116.364 6.364L12 21.364l-7.682-7.682a4.5 4.5 0 010-6.364z" /></svg>
+        Favourites
+      </a>
+      <%}else{%>
+
       <a href="/host/host-home-list"
         class="flex items-center gap-2 px-5 py-2 text-base font-semibold transition-all duration-200 shadow-sm <%= currentPage==='host-homes'?'bg-white text-red-500 border-white rounded-full':'bg-gradient-to-r from-pink-400/80 via-red-500/80 to-red-600/80 hover:bg-white hover:text-white border-white rounded-full' %>">
         <svg
@@ -53,17 +67,9 @@
             stroke-linejoin="round" d="M12 4v16m8-8H4" /></svg>
         Add Home
       </a>
-      <a href="/favourites"
-        class="flex items-center gap-2 px-5 py-2 text-base font-semibold transition-all duration-200 shadow-sm <%= currentPage==='favourites'?'bg-white text-red-500 border-white rounded-full':'bg-gradient-to-r from-pink-400/80 via-red-500/80 to-red-600/80 hover:bg-white hover:text-white border-white rounded-full' %>">
-        <svg
-          class="w-5 h-5 <%= currentPage==='favourites' ? 'text-pink-500' : 'text-white group-hover:text-pink-500' %>"
-          fill="none" stroke="currentColor" stroke-width="2"
-          viewBox="0 0 24 24"><path stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M4.318 6.318a4.5 4.5 0 016.364 0L12 7.636l1.318-1.318a4.5 4.5 0 116.364 6.364L12 21.364l-7.682-7.682a4.5 4.5 0 010-6.364z" /></svg>
-        Favourites
-      </a>
-      <% }%>
+      <%}%>
+
+      <% } %>
     </div>
     <div class="flex items-center gap-4">
       <% if(!isLoggedIn) {%>

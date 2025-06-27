@@ -9,6 +9,7 @@ exports.getLogin = (req, res, next) => {
     isLoggedIn: false,
     errors: [],
     oldInput: { email: "" },
+    user: {},
   });
 };
 
@@ -57,6 +58,7 @@ exports.getSignup = (req, res, next) => {
     currentPage: "signup",
     isLoggedIn: false,
     errors: [],
+    user: {},
     oldInput: {
       firstName: "",
       lastName: "",
@@ -81,6 +83,7 @@ exports.postSignup = [
   check("lastName")
     .matches(/^[A-Za-z]+$/)
     .withMessage("Last name must contain only letters."),
+
 
   //Email Validation
   check("email")
@@ -141,6 +144,7 @@ exports.postSignup = [
           password: password,
           confirmPassword: req.body.confirmPassword,
         },
+        user: {},
       });
     }
     // If validation passes, you can proceed with user creation logic
@@ -174,6 +178,7 @@ exports.postSignup = [
                 email: email,
                 userType: userType,
               },
+              user: {},
             });
           });
     });

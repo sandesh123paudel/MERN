@@ -44,8 +44,12 @@ app.use(authRouter);
 app.use(storeRouter);
 
 app.use("/host", (req, res, next) => {
-  if (!req.session.isLoggedIn) {
-    return res.redirect("/login");
+  if (
+    !req.session.isLoggedIn ||
+    !req.session.user ||
+    req.session.user.userType !== "host"
+  ) {
+    return res.redirect("/");
   }
   next();
 });
