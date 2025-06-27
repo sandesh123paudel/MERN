@@ -94,9 +94,34 @@ exports.postEditHome = (req, res, next) => {
 exports.postDeleteHome = (req, res, next) => {
   const homeId = req.params.homeId;
   console.log(homeId);
-  Home.findByIdAndDelete(homeId).then(() => {
-    res.redirect("/host/host-home-list");
-  });
+
+  Home.findById(homeId)
+    .then((home) => {
+      if (!home) {
+        console.log("No Home Found");
+        return res.redirect("/host/host-home-list");
+      }
+
+      // Only delete local files, not URLs
+      if (home.image && !home.image.startsWith("http")) {
+        fs.unlink(home.image, (err) => {
+          if (err) {
+            console.log("Error while deleting file", err);
+          } else {
+            console.log("File deleted successfully");
+          }
+        });
+      }
+
+      return Home.findByIdAndDelete(homeId);
+    })
+    .then(() => {
+      console.log("Home deleted successfully");
+      res.redirect("/host/host-home-list");
+    })
+    .catch((err) => {
+      console.log("Error while deleting home", err);
+    });
 };
 
 exports.getHostHomes = (req, res, next) => {
