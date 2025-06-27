@@ -11,7 +11,7 @@
       Home in airbnb</h1>
 
     <form action="/host/<%= editing ? 'edit-home' : 'add-home' %>" method="POST"
-      class="bg-white shadow-lg rounded-lg p-8 w-full max-w-md">
+      class="bg-white shadow-lg rounded-lg p-8 w-full max-w-md" enctype="multipart/form-data">
       <div class="mb-4">
         <label for="title" class="block text-gray-700 font-medium mb-2">House
           Name</label>
@@ -22,7 +22,6 @@
           value="<%= editing ? home.houseName : '' %>"
           required
           class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-red-400" />
-
 
            <label for="description" class="block text-gray-700 font-medium mb-2">Description</label>
         <textarea
@@ -65,11 +64,11 @@
             value="<%= editing ? home.rating : '' %>"
             class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-red-400" />
 
-          <label for="image" class="block text-gray-700 font-medium mb-2">Image
-            URL </label>
-          <input type="text"
-            value="<%= editing ? home.image : '' %>"
-            required
+          <label for="image" class="block text-gray-700 font-medium mb-2 mt-2">Choose
+            Image </label>
+          <input type="file"
+
+            accept="image/jpg, image/jpeg, image/png"
             name="image" id="image"
             class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-red-400 mb-2" />
 

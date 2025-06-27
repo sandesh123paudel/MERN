@@ -1,4 +1,5 @@
 const Home = require("../models/home");
+const fs = require("fs");
 
 exports.getAddHome = (req, res, next) => {
   res.render("host/edit-home", {
@@ -11,7 +12,15 @@ exports.getAddHome = (req, res, next) => {
 };
 
 exports.postAddHome = (req, res, next) => {
-  const { houseName, description, price, location, rating, image } = req.body;
+  const { houseName, description, price, location, rating } = req.body;
+  console.log(req.file);
+
+  if (!req.file) {
+    console.log("No file uploaded");
+    return res.status(422).send("No file uploaded");
+  }
+  const image = req.file.path; // Assuming the file path is stored in req.file.path
+
   const home = new Home({
     //houseName:houseName -- being both name same we can use just a single only too
     houseName,
@@ -50,8 +59,7 @@ exports.getEditHome = (req, res, next) => {
 };
 
 exports.postEditHome = (req, res, next) => {
-  const { id, houseName, description, price, location, rating, image } =
-    req.body;
+  const { id, houseName, description, price, location, rating } = req.body;
 
   Home.findById(id)
     .then((home) => {
@@ -60,11 +68,18 @@ exports.postEditHome = (req, res, next) => {
       home.price = price;
       home.location = location;
       home.rating = rating;
-      home.image = image;
+      if (req.file) {
+        fs.unlink(home.image, (err) => {
+          if (err) {
+            console.log("Error while deleting file", err);
+          }
+        });
+        home.image = req.file.path;
+      }
       home
         .save()
         .then((result) => {
-          console.log("Home Edited Successfully");
+          console.log("Home Edited Successfully", result);
         })
         .catch((err) => {
           console.log("Error While Updating", err);

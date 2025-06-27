@@ -64,7 +64,7 @@ const homeSchema = mongoose.Schema({
   price: { type: Number, required: true },
   description: String,
   location: { type: String, required: true },
-  rating: { type: Number, required: true },
+  rating: { type: String, required: true },
   image: String,
 });
 
