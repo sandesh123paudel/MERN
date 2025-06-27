@@ -7,18 +7,39 @@ exports.getLogin = (req, res, next) => {
     pageTitle: "Login-airbnb",
     currentPage: "login",
     isLoggedIn: false,
+    errors: [],
+    oldInput: { email: "" },
   });
 };
 
-exports.postLogin = (req, res, next) => {
-  // // req.isLoggedIn = true; //This is not a good practice, as it won't persist across requests
-  // // Instead, we use cookies or sessions to manage user authentication
-  // // Setting a cookie to indicate the user is logged in
-  // res.cookie("isLoggedIn", true);
+exports.postLogin = async (req, res, next) => {
+  const { email, password } = req.body;
 
-  //Using Session
+  const user = await User.findOne({ email });
+  if (!user) {
+    return res.status(422).render("auth/login", {
+      pageTitle: "Login",
+      currentPage: "login",
+      isLoggedIn: false,
+      errors: ["User does not exist"],
+      oldInput: { email },
+      user: {},
+    });
+  }
+
+  const isMatch = await bcrypt.compare(password, user.password);
+  if (!isMatch) {
+    return res.status(422).render("auth/login", {
+      pageTitle: "Login",
+      currentPage: "login",
+      isLoggedIn: false,
+      errors: ["Invalid Password"],
+      oldInput: { email },
+      user: {},
+    });
+  }
   req.session.isLoggedIn = true;
-
+  req.session.user = user;
   res.redirect("/");
 };
 
