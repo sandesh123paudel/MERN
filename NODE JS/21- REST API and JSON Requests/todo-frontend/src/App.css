@@ -1,0 +1,12 @@
+.kg-row {
+  margin: 10px 0px;
+  align-items: center;
+  justify-content: start;
+
+}
+
+.kg-button {
+  min-width: 80px;
+  text-align: center;
+  margin-left: 0;
+}
