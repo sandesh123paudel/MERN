@@ -2,45 +2,80 @@ import AppName from "./components/AppName";
 import AppTodo from "./components/AddTodo";
 import Message from "./components/Message";
 import TodoItems from "./components/TodoItems";
-import { useState } from "react";
+
+import {
+  useEffect,
+  useState
+}
+
+from "react";
+
+import {
+  addItemToServer,
+  deleteItemFromServer,
+  getItemsFromServer,
+}
+
+from "./services/itemsService";
 
 function App() {
-  const initialtodoItems = [];
+  let [todoItems,
+  setItemState]=useState([]);
 
-  let [todoItems, setItemState] = useState(initialtodoItems);
+  const refreshItems=async ()=> {
+    const updatedItems=await getItemsFromServer();
+    setItemState(updatedItems);
+  }
 
-  const itemsAdded = (item, date) => {
-    // setItemState((currValue) => {
-    //   let newItems = { name: item, duedate: date };
-    //   let newToDoItems = [...currValue, newItems];
+  ;
 
-    //   return newToDoItems;
-    // });
+  useEffect(()=> {
+      refreshItems();
+    }
 
-    //compact way
-    setItemState((currValue) => [...currValue, { name: item, duedate: date }]);
-  };
+    , []);
 
-  const onDeleteHandler = (todoName, todoDate) => {
-    const isConfirmed = window.confirm(
-      `Do you really want to delete "${todoName}"`
-    );
+  const itemsAdded=async (item, date)=> {
+    await addItemToServer(item, date);
+    await refreshItems();
+  }
+
+  ;
+
+  const onDeleteHandler=async (id)=> {
+    const item=todoItems.find((item)=> item.id===id);
+    const isConfirmed=window.confirm(`Do you really want to delete "${item.name}"? This action cannot be undone.`);
 
     if (isConfirmed) {
-      const upDatedItems = todoItems.filter(
-        (todo) => !(todo.name === todoName && todo.duedate === todoDate)
-      );
+      const deletedId=await deleteItemFromServer(id);
+      const upDatedItems=todoItems.filter((item)=> item.id !==(deletedId.id || deletedId));
       setItemState(upDatedItems);
     }
-  };
+  }
 
-  return (
-    <center className="todo-container">
-      <AppName />
-      <AppTodo onSubmit={itemsAdded} />
-      <Message data={todoItems} />
-      <TodoItems todoItems={todoItems} onDelete={onDeleteHandler} />
-    </center>
-  );
+  ;
+
+  return (<center className="todo-container"> <AppName /> <AppTodo onSubmit= {
+      itemsAdded
+    }
+
+    /> <Message data= {
+      todoItems
+    }
+
+    /> <TodoItems todoItems= {
+      todoItems
+    }
+
+    onDelete= {
+      onDeleteHandler
+    }
+
+    onComplete= {
+      refreshItems
+    }
+
+    /> </center>);
 }
+
 export default App;
